@@ -123,3 +123,5 @@ examples/data_preprocess/data
 model_scope_model
 
 .envrc
+
+cuda-keyring_1.1-1_all.deb
