@@ -2,7 +2,9 @@
 ```bash
 # One time setup
 cp sample.envrc .envrc
-# Fill in environment variables
+# Go to wandb.ai/authorize and fill in the WANDB_API_KEY
+direnv allow
+
 source ~/miniconda3/bin/activate && conda create --prefix ./envs python==3.9
 conda activate ./envs
 pip3 install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu124
