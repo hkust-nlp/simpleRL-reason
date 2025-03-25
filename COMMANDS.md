@@ -2,7 +2,7 @@
 ```bash
 # One time setup
 cp sample.envrc .envrc
-# Go to wandb.ai/authorize and fill in the WANDB_API_KEY
+# Go to https://wandb.ai/authorize and fill in the WANDB_API_KEY
 direnv allow
 
 source ~/miniconda3/bin/activate && conda create --prefix ./envs python==3.9
