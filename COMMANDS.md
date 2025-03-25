@@ -7,10 +7,11 @@ direnv allow
 
 source ~/miniconda3/bin/activate && conda create --prefix ./env python=3.9
 source ~/miniconda3/bin/activate && conda activate ./env
-pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu124
-pip install flash-attn --no-build-isolation
-pip install -e . 
-pip install ray[default]==2.10.0
+pip install uv
+uv pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu124
+uv pip install flash-attn --no-build-isolation
+uv pip install -e . 
+uv pip install ray[default]==2.10.0
 
 tmux
 
