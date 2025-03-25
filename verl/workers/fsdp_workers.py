@@ -170,6 +170,7 @@ class ActorRolloutRefWorker(Worker):
             torch_dtype = PrecisionType.to_dtype(torch_dtype)
 
         # override model kwargs
+        # Uses transformers to get the model config
         actor_model_config = AutoConfig.from_pretrained(local_path, trust_remote_code=trust_remote_code)
 
         self.generation_config = get_generation_config(local_path, trust_remote_code=trust_remote_code)

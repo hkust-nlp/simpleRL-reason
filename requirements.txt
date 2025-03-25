@@ -1,6 +1,6 @@
 accelerate
 codetiming
-datasets
+datasets>=2.16.0
 dill
 hydra-core==1.4.0.dev1
 omegaconf==2.4.0.dev3
