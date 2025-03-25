@@ -19,6 +19,7 @@ ray start --head --node-ip-address 0.0.0.0 --num-gpus 8
 # if you want to launch ray on more nodes, use
 ray start --address {MASTER-NODE-ADDRESS}:6379  --num-gpus 8
 
+# From master node
 bash train_grpo_math_tune_ray.sh \
     --model_name Qwen-2.5-Math-7B \
     --max_response_length 8192  \
