@@ -5,14 +5,15 @@ cp sample.envrc .envrc
 # Go to https://wandb.ai/authorize and fill in the WANDB_API_KEY
 direnv allow
 
-source ~/miniconda3/bin/activate && conda create --prefix ./envs python=3.9
-source ~/miniconda3/bin/activate && conda activate ./envs
+source ~/miniconda3/bin/activate && conda create --prefix ./env python=3.9
+source ~/miniconda3/bin/activate && conda activate ./env
 pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu124
 pip install flash-attn --no-build-isolation
 pip install -e . 
 
 tmux
 
+source ~/miniconda3/bin/activate && conda activate ./env
 # launch the master node of ray 
 ray start --head --node-ip-address 0.0.0.0 --num-gpus 8
 
