@@ -7,7 +7,7 @@ export RAY_BACKEND_LOG_LEVEL=debug
 export RAY_DEDUP_LOGS=1
 
 
-export PROJECT_NAME=verl_train
+export PROJECT_NAME=simplerl-math-grpo
 # export WANDB_API_KEY=TO_BE_FILLED
 export WANDB_OFFICIAL=1
 export VLLM_ATTENTION_BACKEND=XFORMERS
@@ -15,7 +15,7 @@ export HDFS_DATA_PATH=$HOME/simpleRL-reason
 export HDFS_MODEL_PATH=TO_BE_FILLED
 export HDFS_CHECKPOINT_PATH=TO_BE_FILLED
 export HDFS_LOG_PATH=TO_BE_FILLED
-export RUN_NAME=verl-grpo
+export RUN_NAME=v1
 
 
 # Default values
