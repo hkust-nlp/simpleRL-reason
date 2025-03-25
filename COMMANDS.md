@@ -13,11 +13,12 @@ pip install -e .
 
 tmux
 
-source ~/miniconda3/bin/activate && conda activate ./env
 # launch the master node of ray 
+source ~/miniconda3/bin/activate && conda activate ./env
 ray start --head --node-ip-address 0.0.0.0 --num-gpus 8
 
-# if you want to launch ray on more nodes, use
+# Worker nodes
+source ~/miniconda3/bin/activate && conda activate ./env
 ray start --address {MASTER-NODE-ADDRESS}:6379  --num-gpus 8
 
 # From master node
