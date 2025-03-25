@@ -10,6 +10,7 @@ source ~/miniconda3/bin/activate && conda activate ./env
 pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu124
 pip install flash-attn --no-build-isolation
 pip install -e . 
+pip install ray[default]==2.10.0
 
 tmux
 
