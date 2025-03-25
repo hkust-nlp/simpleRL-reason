@@ -66,4 +66,4 @@ echo "Commands executed successfully."
 
 # SSH into the remote server again
 echo "SSH command:"
-echo "ssh $username@$ip -p $port -i $key_file"
+echo "ssh $username@$ip -i $key_file"
