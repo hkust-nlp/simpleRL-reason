@@ -172,7 +172,7 @@ ray job submit --address=127.0.0.1:6379 \
   --entrypoint-num-cpus=1 \
   --runtime-env-json='{
         "working_dir": "'${WORKING_DIR}'",
-        "excludes": ["logs/*", "checkpoints/*", "env/*", "docker/*", "examples/*", "patches/*", "scripts/*", "tests/*", ".git/*"],
+        "excludes": ["logs/*", "checkpoints/*", "env/*", "docker/*", "examples/*", "patches/*", "scripts/*", "tests/*", ".git/*", "COMMANDS.md"],
         "env_vars": {
           "http_proxy": "",
           "https_proxy": ""
