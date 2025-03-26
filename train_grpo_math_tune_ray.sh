@@ -11,10 +11,10 @@ export PROJECT_NAME=simplerl-math-grpo
 # export WANDB_API_KEY=TO_BE_FILLED
 export WANDB_OFFICIAL=1
 export VLLM_ATTENTION_BACKEND=XFORMERS
-export HDFS_DATA_PATH=$HOME/simpleRL-reason
+export HDFS_DATA_PATH=/workspace/simpleRL-reason
 export HDFS_MODEL_PATH=TO_BE_FILLED
-export HDFS_CHECKPOINT_PATH=$HOME/simpleRL-reason/checkpoints
-export HDFS_LOG_PATH=$HOME/simpleRL-reason/logs
+export HDFS_CHECKPOINT_PATH=/workspace/simpleRL-reason/checkpoints
+export HDFS_LOG_PATH=/workspace/simpleRL-reason/logs
 mkdir -p $HDFS_LOG_PATH
 mkdir -p $HDFS_CHECKPOINT_PATH
 export RUN_NAME=v1
@@ -176,8 +176,8 @@ ray job submit --address=127.0.0.1:6379 \
     }' \
   -- python -m verl.trainer.main_ppo \
   algorithm.adv_estimator=grpo \
-  data.train_files=$HOME/simpleRL-reason/train.parquet \
-  data.val_files=$HOME/simpleRL-reason/test.parquet \
+  data.train_files=$HDFS_DATA_PATH/train.parquet \
+  data.val_files=$HDFS_DATA_PATH/test.parquet \
   data.train_batch_size=$TRAIN_BATCH_SIZE \
   data.val_batch_size=$VAL_BATCH_SIZE \
   data.max_prompt_length=$MAX_PROMPT_LENGTH \
