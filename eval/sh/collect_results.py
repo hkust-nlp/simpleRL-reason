@@ -488,7 +488,7 @@ if __name__ == "__main__":
     parser.add_argument("--wandb_run_name", type=str, default=None)
     parser.add_argument("--plot_dir", type=str, default=None)
     parser.add_argument("--wandb_project", type=str, default="math-eval-results")
-    parser.add_argument("--wandb_api_key", type=str, default="1635b1d5d43c5ca1cb6f0b22aa8b0960e0491c52")
+    parser.add_argument("--wandb_api_key", type=str, default="123456")
     parser.add_argument("--use_wandb", action="store_true")
     parser.add_argument("--num_threads", type=int, default=8)
     parser.add_argument("--benchmarks", type=str, 
