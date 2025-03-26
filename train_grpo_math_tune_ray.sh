@@ -18,6 +18,7 @@ export HDFS_LOG_PATH=/workspace/simpleRL-reason/logs
 mkdir -p $HDFS_LOG_PATH
 mkdir -p $HDFS_CHECKPOINT_PATH
 export RUN_NAME=v1
+# export RAY_RUNTIME_ENV_TEMPORARY_REFERENCE_EXPIRATION_S=1800  # Add this line
 
 
 # Default values
@@ -165,11 +166,13 @@ echo "LOG FILE PATH: $LOG_FILE_PATH"
 max_num_batched_tokens=$(expr $MAX_PROMPT_LENGTH + $MAX_RESPONSE_LENGTH + 1000)
 echo -e "Training with the following parameters:\nTrain Batch Size: $TRAIN_BATCH_SIZE\nVal Batch Size: $VAL_BATCH_SIZE\nMax Prompt Length: $MAX_PROMPT_LENGTH\nMax Response Length: $MAX_RESPONSE_LENGTH\nLearning Rate: $LEARNING_RATE\nPPO Mini Batch Size: $PPO_MINI_BATCH_SIZE\nPPO Micro Batch Size: $PPO_MICRO_BATCH_SIZE\nKL Loss Coefficient: $KL_LOSS_COEF\nKL Loss Type: $KL_LOSS_TYPE\nTemperature: $TEMPERATURE\nRollout N: $ROLLOUT_N\nKL Coefficient: $KL_COEF\nTotal Epochs: $TOTAL_EPOCHS\nDataset Name: $DATASET_NAME\nModel Name: $MODEL_NAME"
 
+mkdir -p $HDFS_CHECKPOINT_PATH/$RUN_NAME
 
 ray job submit --address=127.0.0.1:6379 \
   --entrypoint-num-cpus=1 \
   --runtime-env-json='{
         "working_dir": "'${WORKING_DIR}'",
+        "excludes": ["logs/*", "checkpoints/*", "env/*", "docker/*", "examples/*", "patches/*", "scripts/*", "tests/*", ".git/*"],
         "env_vars": {
           "http_proxy": "",
           "https_proxy": ""
