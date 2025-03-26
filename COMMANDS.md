@@ -43,7 +43,6 @@ ray start --address fgfq8m6zdljvr2.runpod.internal:6379  --num-gpus 6
 bash train_grpo_math_tune_ray.sh \
     --model_name Qwen/Qwen2.5-Math-7B \
     --max_response_length 8192  \
-    # Only because I can only run 2 nodes with 6 GPUs each
     --train_batch_size 768 \
     --rollout_n 8 \
     --kl_loss_coef 0.0001 \
