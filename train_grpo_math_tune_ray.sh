@@ -74,7 +74,7 @@ generate_suffix() {
       --total_epochs) suffix+="_epochs$2"; shift 2 ;;
       --rollout_gpu_memory_util) shift 2 ;;
       --dataset_name) suffix+="_$2"; dataset_provided=true; shift 2 ;;
-      --model_name) suffix+="_$2"; model_provided=true; shift 2 ;;
+      --model_name) model_name_sanitized=$(echo "$2" | tr '/' '_'); suffix+="_$model_name_sanitized"; model_provided=true; shift 2 ;;
       --remove_clip) suffix+="_remove_clip$2"; shift 2 ;;
       --suffix) input_suffix="$2"; suffix_provided=true; shift 2 ;;
       *) shift ;;
@@ -86,7 +86,8 @@ generate_suffix() {
   fi
 
   if [ "$model_provided" = false ]; then
-    suffix+="_$MODEL_NAME"
+    model_name_sanitized=$(echo "$MODEL_NAME" | tr '/' '_')
+    suffix+="_$model_name_sanitized"
   fi
 
   if [ "$suffix_provided" = true ]; then
