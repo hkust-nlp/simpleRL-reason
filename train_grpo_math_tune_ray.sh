@@ -5,6 +5,9 @@ set -x
 export NCCL_DEBUG=DEBUG
 export RAY_BACKEND_LOG_LEVEL=debug
 export RAY_DEDUP_LOGS=1
+export NCCL_IB_DISABLE=1
+export NCCL_P2P_DISABLE=1
+export NCCL_SOCKET_IFNAME=eth0
 
 
 export PROJECT_NAME=simplerl-math-grpo
@@ -19,7 +22,7 @@ mkdir -p $HDFS_LOG_PATH
 mkdir -p $HDFS_CHECKPOINT_PATH
 export RUN_NAME=v1
 # export RAY_RUNTIME_ENV_TEMPORARY_REFERENCE_EXPIRATION_S=1800  # Add this line
-
+export HYDRA_FULL_ERROR=1
 
 # Default values
 TRAIN_BATCH_SIZE=256
