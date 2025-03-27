@@ -16,7 +16,7 @@ tmux
 
 # launch the master node of ray
 source ~/miniconda3/bin/activate && conda activate ./env
-ray start --head --node-ip-address 10.1.31.5 --num-gpus 6
+ray start --head --node-ip-address 10.1.31.5 --num-gpus 6 --dashboard-host 0.0.0.0
 
 # Worker nodes
 source ~/miniconda3/bin/activate && conda activate ./env
@@ -34,4 +34,9 @@ bash train_grpo_math_tune_ray.sh \
     --rollout_gpu_memory_util 0.75 \
     --rollout_tp 2 \
     --save_freq 5
+
+
+# To view ray logs
+tail -f /tmp/ray/session_*/logs/*
+
 ```
