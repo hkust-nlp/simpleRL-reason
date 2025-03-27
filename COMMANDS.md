@@ -20,7 +20,7 @@ ray start --head --node-ip-address 0.0.0.0 --num-gpus 6
 
 # Worker nodes
 source ~/miniconda3/bin/activate && conda activate ./env
-export MASTER_NODE_IP=10.0.27.80
+export MASTER_NODE_IP=10.1.31.5
 ray start --address $MASTER_NODE_IP:6379  --num-gpus 6
 
 # From master node
