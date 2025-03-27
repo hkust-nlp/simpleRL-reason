@@ -22,11 +22,11 @@ tmux
 
 # launch the master node of ray
 source ~/miniconda3/bin/activate && conda activate ./env
-ray start --head --node-ip-address 10.1.31.5 --num-gpus 6 --dashboard-host 0.0.0.0
+ray start --head --node-ip-address 10.1.96.32 --num-gpus 6 --dashboard-host 0.0.0.0
 
 # Worker nodes
 source ~/miniconda3/bin/activate && conda activate ./env
-export MASTER_NODE_IP=10.1.31.5
+export MASTER_NODE_IP=10.1.96.32
 ray start --address $MASTER_NODE_IP:6379  --num-gpus 6
 
 # From master node
