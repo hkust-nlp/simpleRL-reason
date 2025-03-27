@@ -11,7 +11,7 @@ pip install uv
 # uv pip install "torch==2.4.0" --index-url https://download.pytorch.org/whl/cu124
 uv pip install flash-attn --no-build-isolation
 uv pip install -e .
-uv pip install torch --upgrade --index-url https://download.pytorch.org/whl/cu118
+uv pip install "torch==2.4.0+cu118" --upgrade --index-url https://download.pytorch.org/whl/cu118
 # uv pip install --upgrade "nvidia-nccl-cu12==2.19.3"
 # uv pip install --upgrade "nvidia-nccl-cu12==2.26.2"
 # uv pip install --upgrade "nvidia-nccl-cu12==2.18.3"
