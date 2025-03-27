@@ -89,17 +89,8 @@ class ActorRolloutRefWorker(Worker):
             print(f"MASTER_PORT: {os.environ.get('MASTER_PORT', 'None')}")
             print(f"CUDA_VISIBLE_DEVICES: {os.environ.get('CUDA_VISIBLE_DEVICES', 'None')}")
             print(f"Number of available GPUs: {torch.cuda.device_count()}")
-            # torch.cuda.set_device(int(os.environ.get('LOCAL_RANK')))
-            rank = int(os.environ.get('RANK'))
-            if rank >= 6:
-                local_rank = rank - 6
-            else:
-                local_rank = rank
-            print(f"rank: {rank}, local_rank: {local_rank}")
-            torch.cuda.set_device(local_rank)
+            torch.cuda.set_device(0)
             torch.distributed.init_process_group(backend="nccl")
-
-
 
         # build device mesh for FSDP
         world_size = torch.distributed.get_world_size()
