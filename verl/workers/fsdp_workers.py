@@ -48,6 +48,7 @@ logger.setLevel(os.getenv('VERL_PPO_LOGGING_LEVEL', 'WARN'))
 
 def create_device_mesh(world_size, fsdp_size):
     if fsdp_size < 0 or fsdp_size >= world_size:
+        print(f'fsdp_size: {fsdp_size}, world_size: {world_size}')
         device_mesh = init_device_mesh('cuda', mesh_shape=(world_size,), mesh_dim_names=['fsdp'])
     else:
         raise ValueError(
@@ -85,6 +86,7 @@ class ActorRolloutRefWorker(Worker):
 
         # build device mesh for FSDP
         world_size = torch.distributed.get_world_size()
+        print(f'rank {self.rank} world_size: {world_size}')
         # TODO(sgm): support FSDP hybrid shard for larger model
         self.device_mesh = create_device_mesh(world_size=world_size, fsdp_size=self.config.actor.fsdp_config.fsdp_size)
 
@@ -213,6 +215,11 @@ class ActorRolloutRefWorker(Worker):
 
             if enable_gradient_checkpointing:
                 actor_module.gradient_checkpointing_enable(gradient_checkpointing_kwargs={'use_reentrant': False})
+        import os
+        print(f"NCCL_DEBUG: {os.environ['NCCL_DEBUG']}")
+        print(f"NCCL_SOCKET_IFNAME: {os.environ['NCCL_SOCKET_IFNAME']}")
+        print(f"NCCL_P2P_DISABLE: {os.environ['NCCL_P2P_DISABLE']}")
+
         print(f'rank {self.rank} barrier')
         torch.distributed.barrier()
         print(f'rank {self.rank} barrier done')

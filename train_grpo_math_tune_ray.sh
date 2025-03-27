@@ -2,7 +2,7 @@
 
 USER_ENV=`whoami`
 set -x
-export NCCL_DEBUG=DEBUG
+export NCCL_DEBUG=INFO
 export RAY_BACKEND_LOG_LEVEL=debug
 export RAY_DEDUP_LOGS=1
 # export NCCL_IB_DISABLE=1
