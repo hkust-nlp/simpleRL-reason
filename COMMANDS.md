@@ -22,18 +22,18 @@ tmux
 
 # launch the master node of ray
 source ~/miniconda3/bin/activate && conda activate ./env
-ray start --head --node-ip-address 10.1.96.32 --num-gpus 6 --dashboard-host 0.0.0.0
+ray start --head --node-ip-address 10.0.63.44 --num-gpus 8 --dashboard-host 0.0.0.0
 
 # Worker nodes
 source ~/miniconda3/bin/activate && conda activate ./env
-export MASTER_NODE_IP=10.1.96.32
-ray start --address $MASTER_NODE_IP:6379  --num-gpus 6
+export MASTER_NODE_IP=10.0.63.44
+ray start --address $MASTER_NODE_IP:6379  --num-gpus 8
 
 # From master node
 bash train_grpo_math_tune_ray.sh \
     --model_name Qwen/Qwen2.5-Math-7B \
     --max_response_length 8192  \
-    --train_batch_size 768 \
+    --train_batch_size 1024 \
     --rollout_n 8 \
     --kl_loss_coef 0.0001 \
     --entropy_coeffient 0.001 \
