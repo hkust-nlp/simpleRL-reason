@@ -179,7 +179,8 @@ ray job submit --address=127.0.0.1:6379 \
         "env_vars": {
           "http_proxy": "",
           "https_proxy": "",
-          "NCCL_SOCKET_IFNAME": "'$NCCL_SOCKET_IFNAME'"
+          "NCCL_SOCKET_IFNAME": "'$NCCL_SOCKET_IFNAME'",
+          "NCCL_DEBUG": "'$NCCL_DEBUG'"
         }
     }' \
   -- python -m verl.trainer.main_ppo \
