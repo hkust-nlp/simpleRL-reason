@@ -172,7 +172,7 @@ echo -e "Training with the following parameters:\nTrain Batch Size: $TRAIN_BATCH
 
 mkdir -p $HDFS_CHECKPOINT_PATH/$RUN_NAME
 
-ray job submit --address=127.0.0.1:6379 \
+ray job submit --address=$MASTER_NODE_IP:6379 \
   --entrypoint-num-cpus=1 \
   --runtime-env-json='{
         "working_dir": "'${WORKING_DIR}'",
