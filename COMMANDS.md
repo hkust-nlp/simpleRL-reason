@@ -20,7 +20,7 @@ ray start --head --node-ip-address 0.0.0.0 --num-gpus 6
 
 # Worker nodes
 source ~/miniconda3/bin/activate && conda activate ./env
-ray start --address ____.runpod.internal:6379  --num-gpus 6
+ray start --address 10.0.27.80:6379  --num-gpus 6
 
 # From master node
 bash train_grpo_math_tune_ray.sh \
