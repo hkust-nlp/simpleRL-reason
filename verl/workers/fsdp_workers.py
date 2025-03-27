@@ -87,7 +87,15 @@ class ActorRolloutRefWorker(Worker):
             print(f"WORLD_SIZE: {os.environ.get('WORLD_SIZE', 'None')}")
             print(f"MASTER_ADDR: {os.environ.get('MASTER_ADDR', 'None')}")
             print(f"MASTER_PORT: {os.environ.get('MASTER_PORT', 'None')}")
+            # torch.cuda.set_device(int(os.environ.get('LOCAL_RANK')))
+            rank = int(os.environ.get('RANK'))
+            local_rank = rank
+            if rank >= 6:
+                local_rank = rank - 6
+            torch.cuda.set_device(local_rank)
             torch.distributed.init_process_group(backend="nccl")
+
+
 
         # build device mesh for FSDP
         world_size = torch.distributed.get_world_size()
