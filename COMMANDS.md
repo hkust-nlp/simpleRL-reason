@@ -8,10 +8,13 @@ direnv allow
 source ~/miniconda3/bin/activate && conda create -y --prefix ./env python=3.10
 source ~/miniconda3/bin/activate && conda activate ./env
 pip install uv
-uv pip install "torch==2.4.0" --index-url https://download.pytorch.org/whl/cu124
+# uv pip install "torch==2.4.0" --index-url https://download.pytorch.org/whl/cu124
+uv pip install torch --index-url https://download.pytorch.org/whl/cu118
 uv pip install flash-attn --no-build-isolation
 uv pip install -e .
 # uv pip install --upgrade "nvidia-nccl-cu12==2.19.3"
+# uv pip install --upgrade "nvidia-nccl-cu12==2.26.2"
+# uv pip install --upgrade "nvidia-nccl-cu12==2.18.3"
 
 tmux
 
