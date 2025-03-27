@@ -41,3 +41,62 @@ torch.distributed.DistBackendError: NCCL error in: /pytorch/torch/csrc/distribut
 ncclUnhandledCudaError: Call to CUDA function failed.
 Last error:
 Cuda failure 1 'invalid argument'
+
+
+
+
+1:job_id:0c000000
+:actor_name:WorkerDict
+rank 6 world_size: 12
+fsdp_size: -1, world_size: 12
+rank 6 world_size: 12
+fsdp_size: -1, world_size: 12
+NCCL_DEBUG: INFO
+NCCL_SOCKET_IFNAME: podnet1
+NCCL_P2P_DISABLE: 1
+rank 6 barrier
+c768503f3657:49259:49259 [0] NCCL INFO cudaDriverVersion 12070
+c768503f3657:49259:49259 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to podnet1
+c768503f3657:49259:49259 [0] NCCL INFO Bootstrap : Using podnet1:10.0.166.135<0>
+c768503f3657:49259:49259 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+c768503f3657:49259:49259 [0] NCCL INFO Comm config Blocking set to 1
+c768503f3657:49259:49996 [0] NCCL INFO Failed to open libibverbs.so[.1]
+c768503f3657:49259:49996 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to podnet1
+c768503f3657:49259:49996 [0] NCCL INFO NET/Socket : Using [0]podnet1:10.0.166.135<0>
+c768503f3657:49259:49996 [0] NCCL INFO Using non-device net plugin version 0
+c768503f3657:49259:49996 [0] NCCL INFO Using network Socket
+c768503f3657:49259:49996 [0] NCCL INFO comm 0x2d1f3c00 rank 6 nranks 12 cudaDev 0 nvmlDev 0 busId 2a000 commId 0x53a6ff8c7de133b8 - Init START
+c768503f3657:49259:49996 [0] NCCL INFO NCCL_P2P_LEVEL set by environment to LOC
+c768503f3657:49259:49996 [0] NCCL INFO Setting affinity for GPU 0 to ffff,ffffffff,00000000,0000ffff,ffffffff
+c768503f3657:49259:49996 [0] NCCL INFO NVLS multicast support is available on dev 0
+c768503f3657:49259:49996 [0] NCCL INFO Trees [0] 7/-1/-1->6->0 [1] 7/0/-1->6->-1
+c768503f3657:49259:49996 [0] NCCL INFO P2P Chunksize set to 131072
+c768503f3657:49259:49996 [0] NCCL INFO Channel 00/0 : 1[1] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 01/0 : 1[1] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 00 : 6[0] -> 11[5] via SHM/direct/direct
+c768503f3657:49259:49996 [0] NCCL INFO Channel 01 : 6[0] -> 11[5] via SHM/direct/direct
+c768503f3657:49259:49996 [0] NCCL INFO Connected all rings
+c768503f3657:49259:49996 [0] NCCL INFO Channel 00 : 6[0] -> 7[1] via SHM/direct/direct
+c768503f3657:49259:49996 [0] NCCL INFO Channel 01 : 6[0] -> 7[1] via SHM/direct/direct
+c768503f3657:49259:49996 [0] NCCL INFO Channel 00/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 01/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 00/0 : 6[0] -> 0[0] [send] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 01/0 : 6[0] -> 0[0] [send] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Connected all trees
+c768503f3657:49259:49996 [0] NCCL INFO NVLS comm 0x2d1f3c00 headRank 0 nHeads 1 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 201326592
+c768503f3657:49259:49996 [0] NCCL INFO Channel 02/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 03/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 04/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 05/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 06/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 07/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 08/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 09/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 10/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 11/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 12/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 13/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 14/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 15/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 02/0 : 6[0] -> 0[0] [send] via NET/Socket/0
+c768503f3657:49259:49996 [0] NCCL INFO Channel 03/0 : 

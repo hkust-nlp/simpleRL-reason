@@ -82,6 +82,11 @@ class ActorRolloutRefWorker(Worker):
         self.config = config
         import torch.distributed
         if not torch.distributed.is_initialized():
+            print(f"LOCAL_RANK: {os.environ['LOCAL_RANK']}")
+            print(f"RANK: {os.environ['RANK']}")
+            print(f"WORLD_SIZE: {os.environ['WORLD_SIZE']}")
+            print(f"MASTER_ADDR: {os.environ['MASTER_ADDR']}")
+            print(f"MASTER_PORT: {os.environ['MASTER_PORT']}")
             torch.distributed.init_process_group(backend="nccl")
 
         # build device mesh for FSDP
