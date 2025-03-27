@@ -5,9 +5,9 @@ set -x
 export NCCL_DEBUG=DEBUG
 export RAY_BACKEND_LOG_LEVEL=debug
 export RAY_DEDUP_LOGS=1
-export NCCL_IB_DISABLE=1
-export NCCL_P2P_DISABLE=1
-export NCCL_SOCKET_IFNAME=eth0
+# export NCCL_IB_DISABLE=1
+# export NCCL_P2P_DISABLE=1
+export NCCL_SOCKET_IFNAME=podnet1
 
 
 export PROJECT_NAME=simplerl-math-grpo
