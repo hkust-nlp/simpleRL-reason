@@ -178,7 +178,8 @@ ray job submit --address=127.0.0.1:6379 \
         "excludes": ["logs/*", "checkpoints/*", "env/*", "docker/*", "examples/*", "patches/*", "scripts/*", "tests/*", ".git/*", "COMMANDS.md"],
         "env_vars": {
           "http_proxy": "",
-          "https_proxy": ""
+          "https_proxy": "",
+          "NCCL_SOCKET_IFNAME": "'$NCCL_SOCKET_IFNAME'"
         }
     }' \
   -- python -m verl.trainer.main_ppo \
