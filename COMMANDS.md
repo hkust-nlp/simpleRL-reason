@@ -15,6 +15,7 @@ uv pip install -e .
 # uv pip install --upgrade "nvidia-nccl-cu12==2.19.3"
 # uv pip install --upgrade "nvidia-nccl-cu12==2.26.2"
 # uv pip install --upgrade "nvidia-nccl-cu12==2.18.3"
+uv pip install --upgrade --force-reinstall "ray[default]==2.10.0"
 
 python3 -c "import torch; print(torch.version.cuda)"
 
@@ -22,7 +23,7 @@ tmux
 
 # launch the master node of ray
 source ~/miniconda3/bin/activate && conda activate ./env
-ray start --head --node-ip-address $MASTER_NODE_IP --num-gpus 8 --dashboard-host 0.0.0.0
+ray start --head --node-ip-address $MASTER_NODE_IP --num-gpus 8 --dashboard-host 0.0.0.0 --include-dashboard true
 
 # Worker nodes
 source ~/miniconda3/bin/activate && conda activate ./env
