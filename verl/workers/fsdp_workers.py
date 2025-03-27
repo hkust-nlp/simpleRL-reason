@@ -219,6 +219,7 @@ class ActorRolloutRefWorker(Worker):
         print(f"NCCL_DEBUG: {os.environ['NCCL_DEBUG']}")
         print(f"NCCL_SOCKET_IFNAME: {os.environ['NCCL_SOCKET_IFNAME']}")
         print(f"NCCL_P2P_DISABLE: {os.environ['NCCL_P2P_DISABLE']}")
+        print(f"NCCL_IB_DISABLE: {os.environ['NCCL_IB_DISABLE']}")
 
         print(f'rank {self.rank} barrier')
         torch.distributed.barrier()
