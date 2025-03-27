@@ -213,7 +213,9 @@ class ActorRolloutRefWorker(Worker):
 
             if enable_gradient_checkpointing:
                 actor_module.gradient_checkpointing_enable(gradient_checkpointing_kwargs={'use_reentrant': False})
+        print(f'rank {self.rank} barrier')
         torch.distributed.barrier()
+        print(f'rank {self.rank} barrier done')
 
         if self.rank == 0:
             print_model_size(actor_module)

@@ -6,7 +6,7 @@ export NCCL_DEBUG=DEBUG
 export RAY_BACKEND_LOG_LEVEL=debug
 export RAY_DEDUP_LOGS=1
 # export NCCL_IB_DISABLE=1
-# export NCCL_P2P_DISABLE=1
+export NCCL_P2P_DISABLE=1
 export NCCL_SOCKET_IFNAME=podnet1
 
 
@@ -180,7 +180,8 @@ ray job submit --address=127.0.0.1:6379 \
           "http_proxy": "",
           "https_proxy": "",
           "NCCL_SOCKET_IFNAME": "'$NCCL_SOCKET_IFNAME'",
-          "NCCL_DEBUG": "'$NCCL_DEBUG'"
+          "NCCL_DEBUG": "'$NCCL_DEBUG'",
+          "NCCL_P2P_DISABLE": "'$NCCL_P2P_DISABLE'"
         }
     }' \
   -- python -m verl.trainer.main_ppo \
