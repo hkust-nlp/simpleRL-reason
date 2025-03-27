@@ -6,7 +6,7 @@ export NCCL_DEBUG=INFO
 export RAY_BACKEND_LOG_LEVEL=debug
 export RAY_DEDUP_LOGS=0
 # export NCCL_IB_DISABLE=1
-export NCCL_P2P_DISABLE=1
+# export NCCL_P2P_DISABLE=0
 export NCCL_SOCKET_IFNAME=podnet1
 
 

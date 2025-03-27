@@ -82,11 +82,11 @@ class ActorRolloutRefWorker(Worker):
         self.config = config
         import torch.distributed
         if not torch.distributed.is_initialized():
-            print(f"LOCAL_RANK: {os.environ['LOCAL_RANK']}")
-            print(f"RANK: {os.environ['RANK']}")
-            print(f"WORLD_SIZE: {os.environ['WORLD_SIZE']}")
-            print(f"MASTER_ADDR: {os.environ['MASTER_ADDR']}")
-            print(f"MASTER_PORT: {os.environ['MASTER_PORT']}")
+            print(f"LOCAL_RANK: {os.environ.get('LOCAL_RANK', 'None')}")
+            print(f"RANK: {os.environ.get('RANK', 'None')}")
+            print(f"WORLD_SIZE: {os.environ.get('WORLD_SIZE', 'None')}")
+            print(f"MASTER_ADDR: {os.environ.get('MASTER_ADDR', 'None')}")
+            print(f"MASTER_PORT: {os.environ.get('MASTER_PORT', 'None')}")
             torch.distributed.init_process_group(backend="nccl")
 
         # build device mesh for FSDP
@@ -221,10 +221,10 @@ class ActorRolloutRefWorker(Worker):
             if enable_gradient_checkpointing:
                 actor_module.gradient_checkpointing_enable(gradient_checkpointing_kwargs={'use_reentrant': False})
         import os
-        print(f"NCCL_DEBUG: {os.environ['NCCL_DEBUG']}")
-        print(f"NCCL_SOCKET_IFNAME: {os.environ['NCCL_SOCKET_IFNAME']}")
-        print(f"NCCL_P2P_DISABLE: {os.environ['NCCL_P2P_DISABLE']}")
-        print(f"NCCL_IB_DISABLE: {os.environ['NCCL_IB_DISABLE']}")
+        print(f"NCCL_DEBUG: {os.environ.get('NCCL_DEBUG', 'None')}")
+        print(f"NCCL_SOCKET_IFNAME: {os.environ.get('NCCL_SOCKET_IFNAME', 'None')}")
+        print(f"NCCL_P2P_DISABLE: {os.environ.get('NCCL_P2P_DISABLE', 'None')}")
+        print(f"NCCL_IB_DISABLE: {os.environ.get('NCCL_IB_DISABLE', 'None')}")
 
         print(f'rank {self.rank} barrier')
         torch.distributed.barrier()
