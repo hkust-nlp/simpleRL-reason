@@ -145,6 +145,8 @@ class RayClassWithInitArgs(ClassWithInitArgs):
                  use_gpu: bool = True,
                  num_gpus=1,
                  sharing_with=None) -> Any:
+        print(f"use_gpu: {use_gpu}")
+        print(f"num_gpus: {num_gpus}")
         if sharing_with is not None:
             target_node_id = ray.get(sharing_with.get_node_id.remote())
             cuda_visible_devices = ray.get(sharing_with.get_cuda_visible_devices.remote())
