@@ -94,7 +94,9 @@ class Worker(WorkerHelper):
         worker_group_prefix = os.environ.get("WG_PREFIX", None)
 
         # when decorator @ray.remote applies, __new__ will be called while we don't want to apply _configure_before_init
+        print(f"rank: {rank}, worker_group_prefix: {worker_group_prefix}")
         if None not in [rank, worker_group_prefix] and 'ActorClass(' not in cls.__name__:
+            print(f"registering register_center: {worker_group_prefix}_register_center")
             instance._configure_before_init(f"{worker_group_prefix}_register_center", int(rank))
 
         return instance

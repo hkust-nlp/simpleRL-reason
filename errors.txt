@@ -100,3 +100,41 @@ c768503f3657:49259:49996 [0] NCCL INFO Channel 14/0 : 0[0] -> 6[0] [receive] via
 c768503f3657:49259:49996 [0] NCCL INFO Channel 15/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
 c768503f3657:49259:49996 [0] NCCL INFO Channel 02/0 : 6[0] -> 0[0] [send] via NET/Socket/0
 c768503f3657:49259:49996 [0] NCCL INFO Channel 03/0 : 
+
+
+
+
+[36m(main_task pid=22475)[0m [validate_config] All configuration checks passed successfully!
+[36m(main_task pid=22475)[0m original dataset len: 8523
+[36m(main_task pid=22475)[0m filter dataset len: 8360
+[36m(main_task pid=22475)[0m original dataset len: 500
+[36m(main_task pid=22475)[0m filter dataset len: 496
+[36m(main_task pid=22475)[0m Size of train dataloader: 8
+[36m(main_task pid=22475)[0m Size of val dataloader: 1
+[36m(main_task pid=22475)[0m Total training steps: 160
+[36m(main_task pid=22475)[0m use_gpu: True
+[36m(main_task pid=22475)[0m num_gpus: 1.0
+Error executing job with overrides: ['algorithm.adv_estimator=grpo', 'data.train_files=/workspace/simpleRL-reason/train.parquet', 'data.val_files=/workspace/simpleRL-reason/test.parquet', 'data.train_batch_size=1024', 'data.val_batch_size=500', 'data.max_prompt_length=1024', 'data.max_response_length=8192', 'actor_rollout_ref.model.path=Qwen/Qwen2.5-Math-7B', 'actor_rollout_ref.actor.optim.lr=5e-7', 'actor_rollout_ref.model.use_remove_padding=True', 'actor_rollout_ref.actor.ppo_mini_batch_size=256', 'actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu=2', 'actor_rollout_ref.actor.use_kl_loss=True', 'actor_rollout_ref.actor.kl_loss_coef=0.0001', 'actor_rollout_ref.actor.entropy_coeff=0.001', 'actor_rollout_ref.actor.clip_ratio=0.2', 'actor_rollout_ref.actor.kl_loss_type=low_var_kl', 'actor_rollout_ref.model.enable_gradient_checkpointing=True', 'actor_rollout_ref.actor.fsdp_config.param_offload=False', 'actor_rollout_ref.actor.fsdp_config.grad_offload=False', 'actor_rollout_ref.actor.fsdp_config.optimizer_offload=False', 'actor_rollout_ref.rollout.temperature=1.0', 'actor_rollout_ref.rollout.log_prob_micro_batch_size=160', 'actor_rollout_ref.rollout.tensor_model_parallel_size=2', 'actor_rollout_ref.rollout.name=vllm', 'actor_rollout_ref.rollout.gpu_memory_utilization=0.75', 'actor_rollout_ref.rollout.n=8', 'actor_rollout_ref.rollout.enable_chunked_prefill=False', 'actor_rollout_ref.rollout.max_num_batched_tokens=10216', 'actor_rollout_ref.rollout.micro_rollout_batch_size=1024', 'actor_rollout_ref.ref.log_prob_micro_batch_size=160', 'actor_rollout_ref.ref.fsdp_config.param_offload=True', 'algorithm.kl_ctrl.kl_coef=0.001', 'critic.ppo_micro_batch_size_per_gpu=4', 'trainer.critic_warmup=0', 'trainer.logger=[console,wandb]', 'trainer.project_name=simplerl-math-grpo', 'trainer.remove_previous_ckpt=False', 'trainer.experiment_name=v1_Qwen_Qwen2.5-Math-7B_max_response8192_batch1024_rollout8_klcoef0.0001_entcoef0.001_simplelr_math_35', 'trainer.n_gpus_per_node=8', 'trainer.nnodes=2', 'trainer.remove_clip=False', 'trainer.save_freq=5', 'trainer.test_freq=5', 'trainer.default_local_dir=/workspace/simpleRL-reason/checkpoints/v1_Qwen_Qwen2.5-Math-7B_max_response8192_batch1024_rollout8_klcoef0.0001_entcoef0.001_simplelr_math_35', 'trainer.total_epochs=20']
+Traceback (most recent call last):
+  File "/tmp/ray/session_2025-03-28_03-09-44_369346_5314/runtime_resources/working_dir_files/_ray_pkg_4fb0c225ceda96c8/verl/trainer/main_ppo.py", line 111, in main
+    run_ppo(config)
+  File "/tmp/ray/session_2025-03-28_03-09-44_369346_5314/runtime_resources/working_dir_files/_ray_pkg_4fb0c225ceda96c8/verl/trainer/main_ppo.py", line 119, in run_ppo
+    ray.get(main_task.remote(config, compute_score))
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(AssertionError): [36mray::main_task()[39m (pid=22475, ip=10.0.171.93)
+  File "/tmp/ray/session_2025-03-28_03-09-44_369346_5314/runtime_resources/working_dir_files/_ray_pkg_4fb0c225ceda96c8/verl/trainer/main_ppo.py", line 204, in main_task
+    trainer.init_workers()
+  File "/tmp/ray/session_2025-03-28_03-09-44_369346_5314/runtime_resources/working_dir_files/_ray_pkg_4fb0c225ceda96c8/verl/trainer/ppo/ray_trainer.py", line 618, in init_workers
+    wg_dict = self.ray_worker_group_cls(resource_pool=resource_pool, ray_cls_with_init=worker_dict_cls)
+  File "/tmp/ray/session_2025-03-28_03-09-44_369346_5314/runtime_resources/working_dir_files/_ray_pkg_4fb0c225ceda96c8/verl/single_controller/ray/base.py", line 199, in __init__
+    self._init_with_resource_pool(resource_pool=resource_pool,
+  File "/tmp/ray/session_2025-03-28_03-09-44_369346_5314/runtime_resources/working_dir_files/_ray_pkg_4fb0c225ceda96c8/verl/single_controller/ray/base.py", line 276, in _init_with_resource_pool
+    assert register_center_actor is not None, f"failed to get register_center_actor: {self.name_prefix}_register_center in {list_named_actors(all_namespaces=True)}"
+AssertionError: failed to get register_center_actor: vj75q9_register_center in [{'name': 'datasets_stats_actor', 'namespace': '_dataset_stats_actor'}, {'name': 'vj75q9WorkerDict_0:0', 'namespace': '8894bdca-7a70-4518-8dd0-315bbb53d7d6'}, {'name': '_ray_internal_job_actor_raysubmit_ymJctQjXTNVWsr9v', 'namespace': 'SUPERVISOR_ACTOR_RAY_NAMESPACE'}]
