@@ -27,8 +27,7 @@ ray start --head \
 --node-ip-address $MASTER_NODE_IP \
 --num-gpus 8 \
 --dashboard-host 0.0.0.0 \
---include-dashboard true \
---dashboard-port 8276
+--include-dashboard true
 
 # Worker nodes
 source ~/miniconda3/bin/activate && conda activate ./env
