@@ -57,6 +57,9 @@ iperf3 -s
 # Client
 iperf3 -c $MASTER_NODE_IP -t 10
 
+apt install iputils-ping
+ping -c 10 $MASTER_NODE_IP
+
 apt install iftop
 iftop -i podnet1
 ```
@@ -64,6 +67,7 @@ iftop -i podnet1
 Notes:
 - Had to keep a 8x A100 PCIE allocated for 9 hours before the second node was available
 - 95 Mbits/sec = 11.875 MB/sec on two A100 nodes one in US-KS-2 and the other in CA-MTL-3
+  - Ping: average latency is 26.8ms
 ![intra DC setup bandwidth](1.png)
 
 
