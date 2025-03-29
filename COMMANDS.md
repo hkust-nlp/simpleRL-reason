@@ -70,6 +70,7 @@ iftop -i podnet1
 - Ping: average latency is 1.07ms
 ![inter DC setup bandwidth](2.png)
 - ___ steps took ____ before transitioning to same DC same GPU setup
+- Took 1h 47m until crash due to vllm version
 - Took ___ until run was created in wandb
 
 ### 2 A100 nodes in different DCs
