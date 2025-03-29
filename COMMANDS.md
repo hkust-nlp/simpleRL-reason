@@ -51,7 +51,7 @@ tail -f /tmp/ray/session_*/logs/*
 
 
 # Testing bandwidth
-apt-get install iperf3
+apt-get install -y iperf3
 # Server
 iperf3 -s
 # Client
