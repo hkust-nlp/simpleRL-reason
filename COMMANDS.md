@@ -65,12 +65,14 @@ iftop -i podnet1
 ```
 
 ### 1 A100 node and 1 H100 node in US-KS-2
-- 
+- 1 A100 SXM node and 1 H100 NVL node in US-KS-2
+- 95 Mbits/sec = 11.875 MB/sec
+- Ping: average latency is 1.07ms
 
 ### 2 A100 nodes in different DCs
 - One node in US-KS-2 and the other in CA-MTL-3
 - Had to keep a 8x A100 PCIE allocated for 9 hours before the second node was available
-- 95 Mbits/sec = 11.875 MB/sec on two A100 nodes one in US-KS-2 and the other in CA-MTL-3
+- 95 Mbits/sec = 11.875 MB/sec
   - Ping: average latency is 26.8ms
 ![intra DC setup bandwidth](1.png)
 - Jobs took a while to start, so I moved onto same DC setup
