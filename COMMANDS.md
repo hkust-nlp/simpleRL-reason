@@ -74,6 +74,7 @@ iftop -i podnet1
 - Total pod uptimes:
   - 16h - H100 -> 17 * 22.32 = 379.44
   - 17h - A100 -> 17 * 15.12 = 257.04
+  - Total: 636.48
 
 NCCL tests are timing out
 ```log
