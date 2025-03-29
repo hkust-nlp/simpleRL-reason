@@ -71,6 +71,7 @@ iftop -i podnet1
 - ___ steps took ____ before transitioning to same DC same GPU setup
 - Took 1h 6m until crash due to vllm version
 - Took 1h 4m until crash due to context length
+- Took 1h 25m until crash due to GLOO_SOCKET_IFNAME
 - Took ___ until run was created in wandb
 
 ### 2 A100 nodes in different DCs
