@@ -32,3 +32,16 @@ bash train_grpo_math_tune_ray.sh \
     --rollout_tp 2 \
     --save_freq 5
 ```
+
+
+```bash
+# Ec2 setup
+sudo mkdir /workspace
+
+# Only if EBS volume is new
+sudo mkfs -t xfs /dev/nvme1n1
+
+sudo mount /dev/nvme1n1 /workspace
+
+echo '/dev/nvme1n1  /workspace  xfs  defaults,nofail  0  2' | sudo tee -a /etc/fstab
+```
