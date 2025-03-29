@@ -64,7 +64,11 @@ apt install iftop
 iftop -i podnet1
 ```
 
-Notes:
+### 1 A100 node and 1 H100 node in US-KS-2
+- 
+
+### 2 A100 nodes in different DCs
+- One node in US-KS-2 and the other in CA-MTL-3
 - Had to keep a 8x A100 PCIE allocated for 9 hours before the second node was available
 - 95 Mbits/sec = 11.875 MB/sec on two A100 nodes one in US-KS-2 and the other in CA-MTL-3
   - Ping: average latency is 26.8ms
