@@ -150,7 +150,7 @@ Pass --enable-32bits-pci-domain to configure to support such devices
 
 ### 2 A100 nodes in different DCs
 - One node in US-KS-2 and the other in CA-MTL-3
-- Had to keep a 8x A100 PCIE allocated for 9 hours before the second node was available
+- Had to keep a 8x A100 PCIE allocated for 9 hours before the second node was available => 9 * 13.5 = 121.5
 - 95 Mbits/sec = 11.875 MB/sec
   - Ping: average latency is 26.8ms
 ![intra DC setup bandwidth](1.png)
