@@ -3,6 +3,7 @@
 # One time setup
 cp sample.envrc .envrc
 # Go to https://wandb.ai/authorize and fill in the WANDB_API_KEY
+source .envrc
 direnv allow
 
 source ~/miniconda3/bin/activate && conda create -y --prefix ./env python=3.10
@@ -64,7 +65,7 @@ cd /workspace && git clone https://github.com/aidando73/simpleRL-reason && realp
 git checkout aidand-v2
 ```
 
-
+```bash
 # To view ray logs
 tail -f /tmp/ray/session_*/logs/*
 
@@ -76,9 +77,9 @@ iperf3 -s
 # Client
 iperf3 -c $MASTER_NODE_IP -t 10
 
-apt install iputils-ping
+sudo apt install iputils-ping
 ping -c 10 $MASTER_NODE_IP
 
-apt install iftop
+sudo apt install iftop
 iftop -i podnet1
 ```
