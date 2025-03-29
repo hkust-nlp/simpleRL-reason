@@ -138,3 +138,15 @@ ray.exceptions.RayTaskError(AssertionError): [36mray::main_task()[39m (pid=224
   File "/tmp/ray/session_2025-03-28_03-09-44_369346_5314/runtime_resources/working_dir_files/_ray_pkg_4fb0c225ceda96c8/verl/single_controller/ray/base.py", line 276, in _init_with_resource_pool
     assert register_center_actor is not None, f"failed to get register_center_actor: {self.name_prefix}_register_center in {list_named_actors(all_namespaces=True)}"
 AssertionError: failed to get register_center_actor: vj75q9_register_center in [{'name': 'datasets_stats_actor', 'namespace': '_dataset_stats_actor'}, {'name': 'vj75q9WorkerDict_0:0', 'namespace': '8894bdca-7a70-4518-8dd0-315bbb53d7d6'}, {'name': '_ray_internal_job_actor_raysubmit_ymJctQjXTNVWsr9v', 'namespace': 'SUPERVISOR_ACTOR_RAY_NAMESPACE'}]
+
+
+
+
+    return f(*args, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/dashboard/modules/job/cli.py", line 272, in submit
+    job_id = client.submit_job(
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/dashboard/modules/job/sdk.py", line 254, in submit_job
+    self._raise_error(r)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/dashboard/modules/dashboard_sdk.py", line 283, in _raise_error
+    raise RuntimeError(
+RuntimeError: Request failed with status code 500: No available agent to submit job, please try again later..
