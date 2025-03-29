@@ -51,3 +51,6 @@ bash train_grpo_math_tune_ray.sh \
 tail -f /tmp/ray/session_*/logs/*
 
 ```
+
+Cost Notes:
+- Had to keep a 8x A100 PCIE allocated for 9 hours before the second node was available
