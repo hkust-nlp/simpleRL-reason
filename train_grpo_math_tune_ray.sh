@@ -8,6 +8,7 @@ export RAY_DEDUP_LOGS=0
 # export NCCL_IB_DISABLE=1
 # export NCCL_P2P_DISABLE=0
 export NCCL_SOCKET_IFNAME=podnet1
+export GLOO_SOCKET_IFNAME=podnet1
 # export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5
 
 
@@ -183,7 +184,8 @@ ray job submit --address=$MASTER_NODE_IP:6379 \
           "NCCL_SOCKET_IFNAME": "'$NCCL_SOCKET_IFNAME'",
           "NCCL_DEBUG": "'$NCCL_DEBUG'",
           "NCCL_P2P_DISABLE": "'$NCCL_P2P_DISABLE'",
-          "RAY_DEDUP_LOGS": "'$RAY_DEDUP_LOGS'"
+          "RAY_DEDUP_LOGS": "'$RAY_DEDUP_LOGS'",
+          "GLOO_SOCKET_IFNAME": "'$GLOO_SOCKET_IFNAME'"
         }
     }' \
   -- python -m verl.trainer.main_ppo \
