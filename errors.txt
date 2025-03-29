@@ -767,3 +767,102 @@ Status message: Job entrypoint command failed with exit code 1, last available l
 RuntimeError: Gloo connectFullMesh failed with [../third_party/gloo/gloo/transport/tcp/pair.cc:144] no error
 
 Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+
+
+
+
+
+[36m(WorkerDict pid=93274, ip=10.0.73.113)[0m rank 10 barrier done
+[36m(WorkerDict pid=93274, ip=10.0.73.113)[0m wrap_policy: functools.partial(<function _or_policy at 0x782d3db4b0a0>, policies=[functools.partial(<function transformer_auto_wrap_policy at 0x782d3db4af80>, transformer_layer_cls={<class 'transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer'>})])
+[36m(WorkerDict pid=127544)[0m NCCL_DEBUG: INFO
+[36m(WorkerDict pid=127544)[0m NCCL_SOCKET_IFNAME: podnet1
+[36m(WorkerDict pid=127544)[0m NCCL_P2P_DISABLE: 
+[36m(WorkerDict pid=127544)[0m NCCL_IB_DISABLE: None
+[36m(WorkerDict pid=127544)[0m rank 0 barrier
+[36m(WorkerDict pid=127544)[0m rank 0 barrier done
+[36m(WorkerDict pid=127544)[0m Qwen2ForCausalLM contains 7.62B parameters
+[36m(WorkerDict pid=127544)[0m wrap_policy: functools.partial(<function _or_policy at 0x71b0fcb9f0a0>, policies=[functools.partial(<function transformer_auto_wrap_policy at 0x71b0fcb9ef80>, transformer_layer_cls={<class 'transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer'>})])
+[36m(WorkerDict pid=127544)[0m 
+Loading checkpoint shards: 100%|██████████| 4/4 [00:39<00:00,  9.82s/it]
+Loading checkpoint shards: 100%|██████████| 4/4 [00:39<00:00,  9.77s/it]
+[36m(WorkerDict pid=93272, ip=10.0.73.113)[0m wrap_policy: functools.partial(<function _or_policy at 0x728de5e3eef0>, policies=[functools.partial(<function transformer_auto_wrap_policy at 0x728de5e3edd0>, transformer_layer_cls={<class 'transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer'>})])
+[36m(WorkerDict pid=127754)[0m rank 1 barrier done
+[36m(WorkerDict pid=127754)[0m wrap_policy: functools.partial(<function _or_policy at 0x7af71812b0a0>, policies=[functools.partial(<function transformer_auto_wrap_policy at 0x7af71812af80>, transformer_layer_cls={<class 'transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer'>})])
+[36m(WorkerDict pid=127758)[0m rank 5 barrier done
+[36m(WorkerDict pid=127758)[0m wrap_policy: functools.partial(<function _or_policy at 0x72220aabf0a0>, policies=[functools.partial(<function transformer_auto_wrap_policy at 0x72220aabef80>, transformer_layer_cls={<class 'transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer'>})])
+[36m(WorkerDict pid=127757)[0m rank 4 barrier done
+[36m(WorkerDict pid=127757)[0m wrap_policy: functools.partial(<function _or_policy at 0x7976c86b30a0>, policies=[functools.partial(<function transformer_auto_wrap_policy at 0x7976c86b2f80>, transformer_layer_cls={<class 'transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer'>})])
+[36m(WorkerDict pid=127760)[0m rank 7 barrier done
+[36m(WorkerDict pid=127760)[0m wrap_policy: functools.partial(<function _or_policy at 0x70b5e45070a0>, policies=[functools.partial(<function transformer_auto_wrap_policy at 0x70b5e4506f80>, transformer_layer_cls={<class 'transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer'>})])
+[36m(WorkerDict pid=127755)[0m rank 2 barrier done
+[36m(WorkerDict pid=127755)[0m wrap_policy: functools.partial(<function _or_policy at 0x73279c4bf0a0>, policies=[functools.partial(<function transformer_auto_wrap_policy at 0x73279c4bef80>, transformer_layer_cls={<class 'transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer'>})])
+[36m(WorkerDict pid=127756)[0m rank 3 barrier done
+[36m(WorkerDict pid=127756)[0m wrap_policy: functools.partial(<function _or_policy at 0x7592e4bd70a0>, policies=[functools.partial(<function transformer_auto_wrap_policy at 0x7592e4bd6f80>, transformer_layer_cls={<class 'transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer'>})])
+[36m(WorkerDict pid=127759)[0m rank 6 barrier done
+[36m(WorkerDict pid=127759)[0m wrap_policy: functools.partial(<function _or_policy at 0x7ef0b52970a0>, policies=[functools.partial(<function transformer_auto_wrap_policy at 0x7ef0b5296f80>, transformer_layer_cls={<class 'transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer'>})])
+[36m(WorkerDict pid=127754)[0m Total steps: 160, num_warmup_steps: 0
+[36m(WorkerDict pid=127754)[0m Actor use_remove_padding=True
+Error executing job with overrides: ['algorithm.adv_estimator=grpo', 'data.train_files=/workspace/simpleRL-reason/train.parquet', 'data.val_files=/workspace/simpleRL-reason/test.parquet', 'data.train_batch_size=1024', 'data.val_batch_size=500', 'data.max_prompt_length=1024', 'data.max_response_length=3072', 'actor_rollout_ref.model.path=Qwen/Qwen2.5-Math-7B', 'actor_rollout_ref.actor.optim.lr=5e-7', 'actor_rollout_ref.model.use_remove_padding=True', 'actor_rollout_ref.actor.ppo_mini_batch_size=256', 'actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu=2', 'actor_rollout_ref.actor.use_kl_loss=True', 'actor_rollout_ref.actor.kl_loss_coef=0.0001', 'actor_rollout_ref.actor.entropy_coeff=0.001', 'actor_rollout_ref.actor.clip_ratio=0.2', 'actor_rollout_ref.actor.kl_loss_type=low_var_kl', 'actor_rollout_ref.model.enable_gradient_checkpointing=True', 'actor_rollout_ref.actor.fsdp_config.param_offload=False', 'actor_rollout_ref.actor.fsdp_config.grad_offload=False', 'actor_rollout_ref.actor.fsdp_config.optimizer_offload=False', 'actor_rollout_ref.rollout.temperature=1.0', 'actor_rollout_ref.rollout.log_prob_micro_batch_size=160', 'actor_rollout_ref.rollout.tensor_model_parallel_size=2', 'actor_rollout_ref.rollout.name=vllm', 'actor_rollout_ref.rollout.gpu_memory_utilization=0.75', 'actor_rollout_ref.rollout.n=8', 'actor_rollout_ref.rollout.enable_chunked_prefill=False', 'actor_rollout_ref.rollout.max_num_batched_tokens=5096', 'actor_rollout_ref.rollout.micro_rollout_batch_size=1024', 'actor_rollout_ref.ref.log_prob_micro_batch_size=160', 'actor_rollout_ref.ref.fsdp_config.param_offload=True', 'algorithm.kl_ctrl.kl_coef=0.001', 'critic.ppo_micro_batch_size_per_gpu=4', 'trainer.critic_warmup=0', 'trainer.logger=[console,wandb]', 'trainer.project_name=simplerl-math-grpo', 'trainer.remove_previous_ckpt=False', 'trainer.experiment_name=v1_Qwen_Qwen2.5-Math-7B_batch1024_rollout8_klcoef0.0001_entcoef0.001_simplelr_math_35', 'trainer.n_gpus_per_node=8', 'trainer.nnodes=2', 'trainer.remove_clip=False', 'trainer.save_freq=5', 'trainer.test_freq=5', 'trainer.default_local_dir=/workspace/simpleRL-reason/checkpoints/v1_Qwen_Qwen2.5-Math-7B_batch1024_rollout8_klcoef0.0001_entcoef0.001_simplelr_math_35', 'trainer.total_epochs=20']
+[36m(main_task pid=127174)[0m Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): [36mray::WorkerDict.actor_rollout_init_model()[39m (pid=127544, ip=10.0.123.96, actor_id=b78266194f578f9985c4c22e08000000, repr=<verl.single_controller.ray.base.WorkerDict object at 0x71aeb2690850>)
+[36m(main_task pid=127174)[0m   File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/single_controller/ray/base.py", line 401, in func
+[36m(main_task pid=127174)[0m     return getattr(self.worker_dict[key], name)(*args, **kwargs)
+[36m(main_task pid=127174)[0m   File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/single_controller/base/decorator.py", line 404, in inner
+[36m(main_task pid=127174)[0m     return func(*args, **kwargs)
+[36m(main_task pid=127174)[0m   File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/workers/fsdp_workers.py", line 392, in init_model
+[36m(main_task pid=127174)[0m     self.rollout, self.rollout_sharding_manager = self._build_rollout()
+[36m(main_task pid=127174)[0m   File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/workers/fsdp_workers.py", line 326, in _build_rollout
+[36m(main_task pid=127174)[0m     rollout = vLLMRollout(actor_module=self.actor_module_fsdp,
+[36m(main_task pid=127174)[0m   File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/workers/rollout/vllm_rollout/vllm_rollout.py", line 72, in __init__
+[36m(main_task pid=127174)[0m     print(f"GLOO_SOCKET_IFNAME: {os.environ.get('GLOO_SOCKET_IFNAME')}")
+[36m(main_task pid=127174)[0m UnboundLocalError: local variable 'os' referenced before assignment
+[36m(WorkerDict pid=127544)[0m Total steps: 160, num_warmup_steps: 0
+[36m(WorkerDict pid=127544)[0m Actor use_remove_padding=True
+[36m(WorkerDict pid=127544)[0m Before building vllm rollout, memory allocated (GB): 1.785184383392334, memory reserved (GB): 15.83203125
+[36m(main_task pid=127174)[0m Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): [36mray::WorkerDict.actor_rollout_init_model()[39m (pid=127755, ip=10.0.123.96, actor_id=eb59f6f6e904a6a5b44758cd08000000, repr=<verl.single_controller.ray.base.WorkerDict object at 0x732550eac850>)
+[36m(main_task pid=127174)[0m   File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/single_controller/ray/base.py", line 401, in func
+[36m(main_task pid=127174)[0m     return getattr(self.worker_dict[key], name)(*args, **kwargs)
+[36m(main_task pid=127174)[0m   File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/single_controller/base/decorator.py", line 404, in inner
+[36m(main_task pid=127174)[0m     return func(*args, **kwargs)
+[36m(main_task pid=127174)[0m   File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/workers/fsdp_workers.py", line 392, in init_model
+[36m(main_task pid=127174)[0m     self.rollout, self.rollout_sharding_manager = self._build_rollout()
+[36m(main_task pid=127174)[0m   File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/workers/fsdp_workers.py", line 326, in _build_rollout
+[36m(main_task pid=127174)[0m     rollout = vLLMRollout(actor_module=self.actor_module_fsdp,
+[36m(main_task pid=127174)[0m   File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/workers/rollout/vllm_rollout/vllm_rollout.py", line 72, in __init__
+[36m(main_task pid=127174)[0m     print(f"GLOO_SOCKET_IFNAME: {os.environ.get('GLOO_SOCKET_IFNAME')}")
+[36m(main_task pid=127174)[0m UnboundLocalError: local variable 'os' referenced before assignment
+[36m(WorkerDict pid=127755)[0m Total steps: 160, num_warmup_steps: 0
+[36m(WorkerDict pid=127755)[0m Actor use_remove_padding=True
+Traceback (most recent call last):
+  File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/trainer/main_ppo.py", line 111, in main
+    run_ppo(config)
+  File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/trainer/main_ppo.py", line 119, in run_ppo
+    ray.get(main_task.remote(config, compute_score))
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(UnboundLocalError): [36mray::main_task()[39m (pid=127174, ip=10.0.123.96)
+  File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/trainer/main_ppo.py", line 204, in main_task
+    trainer.init_workers()
+  File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/trainer/ppo/ray_trainer.py", line 638, in init_workers
+    self.actor_rollout_wg.init_model()
+  File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/single_controller/ray/base.py", line 42, in func
+    output = ray.get(output)
+ray.exceptions.RayTaskError(UnboundLocalError): [36mray::WorkerDict.actor_rollout_init_model()[39m (pid=127754, ip=10.0.123.96, actor_id=aa32c1e15cde11600f3b78f108000000, repr=<verl.single_controller.ray.base.WorkerDict object at 0x7af4cc4185e0>)
+  File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/single_controller/ray/base.py", line 401, in func
+    return getattr(self.worker_dict[key], name)(*args, **kwargs)
+  File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/single_controller/base/decorator.py", line 404, in inner
+    return func(*args, **kwargs)
+  File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/workers/fsdp_workers.py", line 392, in init_model
+    self.rollout, self.rollout_sharding_manager = self._build_rollout()
+  File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/workers/fsdp_workers.py", line 326, in _build_rollout
+    rollout = vLLMRollout(actor_module=self.actor_module_fsdp,
+  File "/tmp/ray/session_2025-03-29_06-40-39_738856_4751/runtime_resources/working_dir_files/_ray_pkg_3dd3461e4899b4ae/verl/workers/rollout/vllm_rollout/vllm_rollout.py", line 72, in __init__
+    print(f"GLOO_SOCKET_IFNAME: {os.environ.get('GLOO_SOCKET_IFNAME')}")
+UnboundLocalError: local variable 'os' referenced before assignment
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
