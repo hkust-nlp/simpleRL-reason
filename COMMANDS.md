@@ -70,6 +70,7 @@ iftop -i podnet1
 ![inter DC setup bandwidth](2.png)
 - ___ steps took ____ before transitioning to same DC same GPU setup
 - Took 1h 6m until crash due to vllm version
+- Took 1h 4m until crash due to context length
 - Took ___ until run was created in wandb
 
 ### 2 A100 nodes in different DCs
