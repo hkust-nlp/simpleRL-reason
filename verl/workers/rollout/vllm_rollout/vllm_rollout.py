@@ -38,6 +38,7 @@ from verl.workers.rollout.base import BaseRollout
 from verl.third_party.vllm import LLM, vllm_version
 from verl.third_party.vllm import parallel_state as vllm_ps
 from vllm import SamplingParams
+import os
 
 # TODO
 # 1. support pp in vllm
