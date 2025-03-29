@@ -46,4 +46,6 @@ sudo mount /dev/nvme1n1 /workspace
 echo '/dev/nvme1n1  /workspace  xfs  defaults,nofail  0  2' | sudo tee -a /etc/fstab
 
 sudo chown ubuntu:ubuntu /workspace
+
+cd /workspace && git clone https://github.com/aidando73/simpleRL-reason && realpath simpleRL-reason
 ```
