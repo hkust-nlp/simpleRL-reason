@@ -69,6 +69,7 @@ class vLLMRollout(BaseRollout):
         """
         super().__init__()
 
+        import os
         print(f"GLOO_SOCKET_IFNAME: {os.environ.get('GLOO_SOCKET_IFNAME')}")
         self.config = config
         assert not (not config.enforce_eager and config.free_cache_engine), \
