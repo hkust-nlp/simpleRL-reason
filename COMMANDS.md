@@ -73,6 +73,7 @@ iftop -i podnet1
 - 95 Mbits/sec = 11.875 MB/sec on two A100 nodes one in US-KS-2 and the other in CA-MTL-3
   - Ping: average latency is 26.8ms
 ![intra DC setup bandwidth](1.png)
+- Jobs took a while to start, so I moved onto same DC setup
 
 
 
