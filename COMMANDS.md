@@ -44,4 +44,6 @@ sudo mkfs -t xfs /dev/nvme1n1
 sudo mount /dev/nvme1n1 /workspace
 
 echo '/dev/nvme1n1  /workspace  xfs  defaults,nofail  0  2' | sudo tee -a /etc/fstab
+
+sudo chown ubuntu:ubuntu /workspace
 ```
