@@ -68,6 +68,7 @@ iftop -i podnet1
 - 1 A100 SXM node and 1 H100 NVL node in US-KS-2
 - 95 Mbits/sec = 11.875 MB/sec
 - Ping: average latency is 1.07ms
+- ___ steps took ____ before transitioning to same DC same GPU setup
 
 ### 2 A100 nodes in different DCs
 - One node in US-KS-2 and the other in CA-MTL-3
