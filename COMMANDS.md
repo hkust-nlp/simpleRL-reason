@@ -135,6 +135,9 @@ Pass --enable-32bits-pci-domain to configure to support such devices
 6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (4/34) after sleep for 400 msec
 6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (5/34) after sleep for 500 msec
 6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (6/34) after sleep for 600 msec
+6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (8/34) after sleep for 800 msec
+6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (9/34) after sleep for 900 msec
+6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (10/34) after sleep for 1000 msec
 ```
 
 ### 2 A100 nodes in different DCs
