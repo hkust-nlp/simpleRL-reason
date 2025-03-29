@@ -68,11 +68,12 @@ iftop -i podnet1
 - 95 Mbits/sec = 11.875 MB/sec
 - Ping: average latency is 1.07ms
 ![inter DC setup bandwidth](2.png)
-- ___ steps took ____ before transitioning to same DC same GPU setup
 - Took 1h 6m until crash due to vllm version
 - Took 1h 4m until crash due to context length
 - Took ~1h until crash due to GLOO_SOCKET_IFNAME
-- Took ___ until run was created in wandb
+- Total pod uptimes:
+  - 16h - H100 -> 17 * 22.32 = 379.44
+  - 17h - A100 -> 17 * 15.12 = 257.04
 
 NCCL tests are timing out
 ```log
@@ -138,7 +139,13 @@ Pass --enable-32bits-pci-domain to configure to support such devices
 6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (8/34) after sleep for 800 msec
 6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (9/34) after sleep for 900 msec
 6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (10/34) after sleep for 1000 msec
+6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (11/34) after sleep for 1100 msec
+6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (12/34) after sleep for 1200 msec
+6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (13/34) after sleep for 1300 msec
+6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (14/34) after sleep for 1400 msec
+6e094e9a088e:147147:147173 [0] NCCL INFO socketStartConnect: connect returned Connection timed out, retrying (15/34) after sleep for 1500 msec
 ```
+
 
 ### 2 A100 nodes in different DCs
 - One node in US-KS-2 and the other in CA-MTL-3
