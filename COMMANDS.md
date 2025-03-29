@@ -49,7 +49,15 @@ bash train_grpo_math_tune_ray.sh \
 # To view ray logs
 tail -f /tmp/ray/session_*/logs/*
 
+
+# Testing bandwidth
+apt-get install iperf3
+# Server
+iperf3 -s
+# Client
+iperf3 -c $MASTER_NODE_IP -t 10
 ```
 
-Cost Notes:
+Notes:
 - Had to keep a 8x A100 PCIE allocated for 9 hours before the second node was available
+- 95 Mbits/sec = 11.875 MB/sec on two A100 nodes one in US-KS-2 and the other in CA-MTL-3
