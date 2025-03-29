@@ -160,6 +160,10 @@ class Worker(Worker):
             assert world_size != -1, "The world_size is set to -1, not initialized by TORCHRUN"
             self.parallel_config.world_size = world_size
 
+            # Print GLOO_SOCKET_IFNAME for debugging
+            import os
+            print(f"GLOO_SOCKET_IFNAME: {os.environ.get('GLOO_SOCKET_IFNAME', 'Not set')}")
+
             _check_if_gpu_supports_dtype(self.model_config.dtype)
             torch.cuda.empty_cache()
             self.init_gpu_memory = torch.cuda.mem_get_info()[0]

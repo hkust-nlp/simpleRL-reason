@@ -2,21 +2,29 @@
 
 USER_ENV=`whoami`
 set -x
-export NCCL_DEBUG=DEBUG
+export NCCL_DEBUG=INFO
 export RAY_BACKEND_LOG_LEVEL=debug
-export RAY_DEDUP_LOGS=1
+export RAY_DEDUP_LOGS=0
+# export NCCL_IB_DISABLE=1
+# export NCCL_P2P_DISABLE=0
+export NCCL_SOCKET_IFNAME=podnet1
+export GLOO_SOCKET_IFNAME=podnet1
+# export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5
 
 
 export PROJECT_NAME=simplerl-math-grpo
 # export WANDB_API_KEY=TO_BE_FILLED
 export WANDB_OFFICIAL=1
 export VLLM_ATTENTION_BACKEND=XFORMERS
-export HDFS_DATA_PATH=$HOME/simpleRL-reason
+export HDFS_DATA_PATH=/workspace/simpleRL-reason
 export HDFS_MODEL_PATH=TO_BE_FILLED
-export HDFS_CHECKPOINT_PATH=TO_BE_FILLED
-export HDFS_LOG_PATH=TO_BE_FILLED
+export HDFS_CHECKPOINT_PATH=/workspace/simpleRL-reason/checkpoints
+export HDFS_LOG_PATH=/workspace/simpleRL-reason/logs
+mkdir -p $HDFS_LOG_PATH
+mkdir -p $HDFS_CHECKPOINT_PATH
 export RUN_NAME=v1
-
+# export RAY_RUNTIME_ENV_TEMPORARY_REFERENCE_EXPIRATION_S=1800  # Add this line
+export HYDRA_FULL_ERROR=1
 
 # Default values
 TRAIN_BATCH_SIZE=256
@@ -72,7 +80,7 @@ generate_suffix() {
       --total_epochs) suffix+="_epochs$2"; shift 2 ;;
       --rollout_gpu_memory_util) shift 2 ;;
       --dataset_name) suffix+="_$2"; dataset_provided=true; shift 2 ;;
-      --model_name) suffix+="_$2"; model_provided=true; shift 2 ;;
+      --model_name) model_name_sanitized=$(echo "$2" | tr '/' '_'); suffix+="_$model_name_sanitized"; model_provided=true; shift 2 ;;
       --remove_clip) suffix+="_remove_clip$2"; shift 2 ;;
       --suffix) input_suffix="$2"; suffix_provided=true; shift 2 ;;
       *) shift ;;
@@ -84,7 +92,8 @@ generate_suffix() {
   fi
 
   if [ "$model_provided" = false ]; then
-    suffix+="_$MODEL_NAME"
+    model_name_sanitized=$(echo "$MODEL_NAME" | tr '/' '_')
+    suffix+="_$model_name_sanitized"
   fi
 
   if [ "$suffix_provided" = true ]; then
@@ -162,20 +171,27 @@ echo "LOG FILE PATH: $LOG_FILE_PATH"
 max_num_batched_tokens=$(expr $MAX_PROMPT_LENGTH + $MAX_RESPONSE_LENGTH + 1000)
 echo -e "Training with the following parameters:\nTrain Batch Size: $TRAIN_BATCH_SIZE\nVal Batch Size: $VAL_BATCH_SIZE\nMax Prompt Length: $MAX_PROMPT_LENGTH\nMax Response Length: $MAX_RESPONSE_LENGTH\nLearning Rate: $LEARNING_RATE\nPPO Mini Batch Size: $PPO_MINI_BATCH_SIZE\nPPO Micro Batch Size: $PPO_MICRO_BATCH_SIZE\nKL Loss Coefficient: $KL_LOSS_COEF\nKL Loss Type: $KL_LOSS_TYPE\nTemperature: $TEMPERATURE\nRollout N: $ROLLOUT_N\nKL Coefficient: $KL_COEF\nTotal Epochs: $TOTAL_EPOCHS\nDataset Name: $DATASET_NAME\nModel Name: $MODEL_NAME"
 
+mkdir -p $HDFS_CHECKPOINT_PATH/$RUN_NAME
 
-ray job submit --address=${HEAD_IP}:${HEAD_PORT} \
+ray job submit --address=$MASTER_NODE_IP:6379 \
   --entrypoint-num-cpus=1 \
   --runtime-env-json='{
         "working_dir": "'${WORKING_DIR}'",
+        "excludes": ["logs/*", "checkpoints/*", "env/*", "docker/*", "examples/*", "patches/*", "scripts/*", "tests/*", ".git/*", "COMMANDS.md"],
         "env_vars": {
           "http_proxy": "",
-          "https_proxy": ""
+          "https_proxy": "",
+          "NCCL_SOCKET_IFNAME": "'$NCCL_SOCKET_IFNAME'",
+          "NCCL_DEBUG": "'$NCCL_DEBUG'",
+          "NCCL_P2P_DISABLE": "'$NCCL_P2P_DISABLE'",
+          "RAY_DEDUP_LOGS": "'$RAY_DEDUP_LOGS'",
+          "GLOO_SOCKET_IFNAME": "'$GLOO_SOCKET_IFNAME'"
         }
     }' \
   -- python -m verl.trainer.main_ppo \
   algorithm.adv_estimator=grpo \
-  data.train_files=$HOME/simpleRL-reason/train.parquet \
-  data.val_files=$HOME/simpleRL-reason/test.parquet \
+  data.train_files=$HDFS_DATA_PATH/train.parquet \
+  data.val_files=$HDFS_DATA_PATH/test.parquet \
   data.train_batch_size=$TRAIN_BATCH_SIZE \
   data.val_batch_size=$VAL_BATCH_SIZE \
   data.max_prompt_length=$MAX_PROMPT_LENGTH \
@@ -213,7 +229,7 @@ ray job submit --address=${HEAD_IP}:${HEAD_PORT} \
   trainer.remove_previous_ckpt=$REMOVE_PREVIOUS_CKPT \
   trainer.experiment_name=$RUN_NAME \
   trainer.n_gpus_per_node=8 \
-  trainer.nnodes=$ARNOLD_WORKER_NUM \
+  trainer.nnodes=2 \
   trainer.remove_clip=$REMOVE_CLIP \
   trainer.save_freq=$SAVE_FREQ \
   trainer.test_freq=$TEST_FREQ \

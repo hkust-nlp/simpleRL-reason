@@ -48,6 +48,7 @@ logger.setLevel(os.getenv('VERL_PPO_LOGGING_LEVEL', 'WARN'))
 
 def create_device_mesh(world_size, fsdp_size):
     if fsdp_size < 0 or fsdp_size >= world_size:
+        print(f'fsdp_size: {fsdp_size}, world_size: {world_size}')
         device_mesh = init_device_mesh('cuda', mesh_shape=(world_size,), mesh_dim_names=['fsdp'])
     else:
         raise ValueError(
@@ -81,10 +82,19 @@ class ActorRolloutRefWorker(Worker):
         self.config = config
         import torch.distributed
         if not torch.distributed.is_initialized():
+            print(f"LOCAL_RANK: {os.environ.get('LOCAL_RANK', 'None')}")
+            print(f"RANK: {os.environ.get('RANK', 'None')}")
+            print(f"WORLD_SIZE: {os.environ.get('WORLD_SIZE', 'None')}")
+            print(f"MASTER_ADDR: {os.environ.get('MASTER_ADDR', 'None')}")
+            print(f"MASTER_PORT: {os.environ.get('MASTER_PORT', 'None')}")
+            print(f"CUDA_VISIBLE_DEVICES: {os.environ.get('CUDA_VISIBLE_DEVICES', 'None')}")
+            print(f"Number of available GPUs: {torch.cuda.device_count()}")
+            torch.cuda.set_device(0)
             torch.distributed.init_process_group(backend="nccl")
 
         # build device mesh for FSDP
         world_size = torch.distributed.get_world_size()
+        print(f'rank {self.rank} world_size: {world_size}')
         # TODO(sgm): support FSDP hybrid shard for larger model
         self.device_mesh = create_device_mesh(world_size=world_size, fsdp_size=self.config.actor.fsdp_config.fsdp_size)
 
@@ -213,7 +223,15 @@ class ActorRolloutRefWorker(Worker):
 
             if enable_gradient_checkpointing:
                 actor_module.gradient_checkpointing_enable(gradient_checkpointing_kwargs={'use_reentrant': False})
+        import os
+        print(f"NCCL_DEBUG: {os.environ.get('NCCL_DEBUG', 'None')}")
+        print(f"NCCL_SOCKET_IFNAME: {os.environ.get('NCCL_SOCKET_IFNAME', 'None')}")
+        print(f"NCCL_P2P_DISABLE: {os.environ.get('NCCL_P2P_DISABLE', 'None')}")
+        print(f"NCCL_IB_DISABLE: {os.environ.get('NCCL_IB_DISABLE', 'None')}")
+
+        print(f'rank {self.rank} barrier')
         torch.distributed.barrier()
+        print(f'rank {self.rank} barrier done')
 
         if self.rank == 0:
             print_model_size(actor_module)

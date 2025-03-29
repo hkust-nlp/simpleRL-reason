@@ -1,0 +1,238 @@
+1WARNING:2025-03-27 09:46:04,357:Initialized ProcessPoolExecutor with 16 workers
+Reward function type: mix
+Format penalty value: -1.0
+2025-03-27 09:46:04,859	INFO worker.py:1432 -- Using address 10.1.31.5:6379 set in the environment variable RAY_ADDRESS
+2025-03-27 09:46:04,859	INFO worker.py:1567 -- Connecting to existing Ray cluster at address: 10.1.31.5:6379...
+2025-03-27 09:46:04,879	INFO worker.py:1743 -- Connected to Ray cluster. View the dashboard at [1m[32m10.1.31.5:8265 [39m[22m
+[36m(pid=58504)[0m Reward function type: mix
+[36m(pid=58504)[0m Format penalty value: -1.0
+[36m(pid=58504)[0m WARNING:2025-03-27 09:46:19,098:Initialized ProcessPoolExecutor with 16 workers
+[36m(main_task pid=58504)[0m {'actor_rollout_ref': {'actor': {'clip_ratio': 0.2,
+[36m(main_task pid=58504)[0m                                  'entropy_coeff': 0.001,
+[36m(main_task pid=58504)[0m                                  'fsdp_config': {'fsdp_size': -1,
+[36m(main_task pid=58504)[0m                                                  'grad_offload': False,
+[36m(main_task pid=58504)[0m                                                  'optimizer_offload': False,
+[36m(main_task pid=58504)[0m                                                  'param_offload': False,
+[36m(main_task pid=58504)[0m                                                  'wrap_policy': {'min_num_params': 0}},
+[36m(main_task pid=58504)[0m                                  'grad_clip': 1.0,
+[36m(main_task pid=58504)[0m                                  'kl_loss_coef': 0.0001,
+[36m(main_task pid=58504)[0m                                  'kl_loss_type': 'low_var_kl',
+[36m(main_task pid=58504)[0m                                  'optim': {'lr': 5e-07,
+[36m(main_task pid=58504)[0m                                            'lr_warmup_steps_ratio': 0.0,
+[36m(main_task pid=58504)[0m                                            'min_lr_ratio': None,
+[36m(main_task pid=58504)[0m                                            'total_training_steps': -1,
+[36m(main_task pid=58504)[0m                                            'warmup_style': 'constant'},
+[36m(main_task pid=58504)[0m                                  'ppo_epochs': 1,
+[36m(main_task pid=58504)[0m                                  'ppo_max_token_len_per_gpu': 16384,
+[36m(main_task pid=58504)[0m                                  'ppo_micro_batch_size': None,
+[36m(main_task pid=58504)[0m                                  'ppo_micro_batch_size_per_gpu': 2,
+[36m(main_task pid=58504)[0m                                  'ppo_mini_batch_size': 256,
+[36m(main_task pid=58504)[0m                                  'shuffle': False,
+[36m(main_task pid=58504)[0m                                  'strategy': 'fsdp',
+[36m(main_task pid=58504)[0m                                  'ulysses_sequence_parallel_size': 1,
+[36m(main_task pid=58504)[0m                                  'use_dynamic_bsz': False,
+[36m(main_task pid=58504)[0m                                  'use_kl_loss': True},
+[36m(main_task pid=58504)[0m                        'hybrid_engine': True,
+[36m(main_task pid=58504)[0m                        'model': {'enable_gradient_checkpointing': True,
+[36m(main_task pid=58504)[0m                                  'external_lib': None,
+[36m(main_task pid=58504)[0m                                  'override_config': {},
+[36m(main_task pid=58504)[0m                                  'path': 'Qwen/Qwen2.5-Math-7B',
+[36m(main_task pid=58504)[0m                                  'use_remove_padding': True},
+[36m(main_task pid=58504)[0m                        'ref': {'fsdp_config': {'param_offload': True,
+[36m(main_task pid=58504)[0m                                                'wrap_policy': {'min_num_params': 0}},
+[36m(main_task pid=58504)[0m                                'log_prob_max_token_len_per_gpu': 16384,
+[36m(main_task pid=58504)[0m                                'log_prob_micro_batch_size': 160,
+[36m(main_task pid=58504)[0m                                'log_prob_micro_batch_size_per_gpu': None,
+[36m(main_task pid=58504)[0m                                'log_prob_use_dynamic_bsz': False,
+[36m(main_task pid=58504)[0m                                'ulysses_sequence_parallel_size': 1},
+[36m(main_task pid=58504)[0m                        'rollout': {'disable_log_stats': True,
+[36m(main_task pid=58504)[0m                                    'do_sample': True,
+[36m(main_task pid=58504)[0m                                    'dtype': 'bfloat16',
+[36m(main_task pid=58504)[0m                                    'enable_chunked_prefill': False,
+[36m(main_task pid=58504)[0m                                    'enforce_eager': True,
+[36m(main_task pid=58504)[0m                                    'free_cache_engine': True,
+[36m(main_task pid=58504)[0m                                    'gpu_memory_utilization': 0.75,
+[36m(main_task pid=58504)[0m                                    'ignore_eos': False,
+[36m(main_task pid=58504)[0m                                    'load_format': 'dummy_dtensor',
+[36m(main_task pid=58504)[0m                                    'log_prob_max_token_len_per_gpu': 16384,
+[36m(main_task pid=58504)[0m                                    'log_prob_micro_batch_size': 160,
+[36m(main_task pid=58504)[0m                                    'log_prob_micro_batch_size_per_gpu': None,
+[36m(main_task pid=58504)[0m                                    'log_prob_use_dynamic_bsz': False,
+[36m(main_task pid=58504)[0m                                    'max_num_batched_tokens': 10216,
+[36m(main_task pid=58504)[0m                                    'max_num_seqs': 1024,
+[36m(main_task pid=58504)[0m                                    'micro_rollout_batch_size': 1024,
+[36m(main_task pid=58504)[0m                                    'model_path': 'Qwen/Qwen2.5-Math-7B',
+[36m(main_task pid=58504)[0m                                    'n': 8,
+[36m(main_task pid=58504)[0m                                    'name': 'vllm',
+[36m(main_task pid=58504)[0m                                    'prompt_length': 1024,
+[36m(main_task pid=58504)[0m                                    'response_length': 8192,
+[36m(main_task pid=58504)[0m                                    'swap_space': 40,
+[36m(main_task pid=58504)[0m                                    'temperature': 1.0,
+[36m(main_task pid=58504)[0m                                    'tensor_model_parallel_size': 2,
+[36m(main_task pid=58504)[0m                                    'top_k': -1,
+[36m(main_task pid=58504)[0m                                    'top_p': 1}},
+[36m(main_task pid=58504)[0m  'algorithm': {'adv_estimator': 'grpo',
+[36m(main_task pid=58504)[0m                'gamma': 1.0,
+[36m(main_task pid=58504)[0m                'kl_ctrl': {'kl_coef': 0.001, 'type': 'fixed'},
+[36m(main_task pid=58504)[0m                'kl_penalty': 'kl',
+[36m(main_task pid=58504)[0m                'lam': 1.0},
+[36m(main_task pid=58504)[0m  'critic': {'cliprange_value': 0.5,
+[36m(main_task pid=58504)[0m             'forward_max_token_len_per_gpu': 32768,
+[36m(main_task pid=58504)[0m             'forward_micro_batch_size': None,
+[36m(main_task pid=58504)[0m             'forward_micro_batch_size_per_gpu': 4,
+[36m(main_task pid=58504)[0m             'grad_clip': 1.0,
+[36m(main_task pid=58504)[0m             'model': {'enable_gradient_checkpointing': True,
+[36m(main_task pid=58504)[0m                       'external_lib': None,
+[36m(main_task pid=58504)[0m                       'fsdp_config': {'fsdp_size': -1,
+[36m(main_task pid=58504)[0m                                       'grad_offload': False,
+[36m(main_task pid=58504)[0m                                       'optimizer_offload': False,
+[36m(main_task pid=58504)[0m                                       'param_offload': False,
+[36m(main_task pid=58504)[0m                                       'wrap_policy': {'min_num_params': 0}},
+[36m(main_task pid=58504)[0m                       'override_config': {},
+[36m(main_task pid=58504)[0m                       'path': '~/models/deepseek-llm-7b-chat',
+[36m(main_task pid=58504)[0m                       'tokenizer_path': 'Qwen/Qwen2.5-Math-7B',
+[36m(main_task pid=58504)[0m                       'use_remove_padding': False},
+[36m(main_task pid=58504)[0m             'optim': {'lr': 1e-05,
+[36m(main_task pid=58504)[0m                       'lr_warmup_steps_ratio': 0.0,
+[36m(main_task pid=58504)[0m                       'min_lr_ratio': None,
+[36m(main_task pid=58504)[0m                       'total_training_steps': -1,
+[36m(main_task pid=58504)[0m                       'warmup_style': 'constant'},
+[36m(main_task pid=58504)[0m             'ppo_epochs': 1,
+[36m(main_task pid=58504)[0m             'ppo_max_token_len_per_gpu': 32768,
+[36m(main_task pid=58504)[0m             'ppo_micro_batch_size': None,
+[36m(main_task pid=58504)[0m             'ppo_micro_batch_size_per_gpu': 4,
+[36m(main_task pid=58504)[0m             'ppo_mini_batch_size': 256,
+[36m(main_task pid=58504)[0m             'shuffle': False,
+[36m(main_task pid=58504)[0m             'strategy': 'fsdp',
+[36m(main_task pid=58504)[0m             'ulysses_sequence_parallel_size': 1,
+[36m(main_task pid=58504)[0m             'use_dynamic_bsz': False},
+[36m(main_task pid=58504)[0m  'data': {'max_prompt_length': 1024,
+[36m(main_task pid=58504)[0m           'max_response_length': 8192,
+[36m(main_task pid=58504)[0m           'prompt_key': 'prompt',
+[36m(main_task pid=58504)[0m           'return_raw_chat': False,
+[36m(main_task pid=58504)[0m           'return_raw_input_ids': False,
+[36m(main_task pid=58504)[0m           'shuffle': True,
+[36m(main_task pid=58504)[0m           'tokenizer': None,
+[36m(main_task pid=58504)[0m           'train_batch_size': 768,
+[36m(main_task pid=58504)[0m           'train_files': '/workspace/simpleRL-reason/train.parquet',
+[36m(main_task pid=58504)[0m           'val_batch_size': 500,
+[36m(main_task pid=58504)[0m           'val_files': '/workspace/simpleRL-reason/test.parquet'},
+[36m(main_task pid=58504)[0m  'reward_model': {'enable': False,
+[36m(main_task pid=58504)[0m                   'forward_max_token_len_per_gpu': 32768,
+[36m(main_task pid=58504)[0m                   'max_length': None,
+[36m(main_task pid=58504)[0m                   'micro_batch_size': None,
+[36m(main_task pid=58504)[0m                   'micro_batch_size_per_gpu': None,
+[36m(main_task pid=58504)[0m                   'model': {'external_lib': None,
+[36m(main_task pid=58504)[0m                             'fsdp_config': {'fsdp_size': -1,
+[36m(main_task pid=58504)[0m                                             'min_num_params': 0,
+[36m(main_task pid=58504)[0m                                             'param_offload': False},
+[36m(main_task pid=58504)[0m                             'input_tokenizer': 'Qwen/Qwen2.5-Math-7B',
+[36m(main_task pid=58504)[0m                             'path': '~/models/FsfairX-LLaMA3-RM-v0.1',
+[36m(main_task pid=58504)[0m                             'use_remove_padding': False},
+[36m(main_task pid=58504)[0m                   'strategy': 'fsdp',
+[36m(main_task pid=58504)[0m                   'ulysses_sequence_parallel_size': 1,
+[36m(main_task pid=58504)[0m                   'use_dynamic_bsz': False},
+[36m(main_task pid=58504)[0m  'trainer': {'critic_warmup': 0,
+[36m(main_task pid=58504)[0m              'default_hdfs_dir': None,
+[36m(main_task pid=58504)[0m              'default_local_dir': '/workspace/simpleRL-reason/checkpoints/v1_Qwen_Qwen2.5-Math-7B_max_response8192_batch768_rollout8_klcoef0.0001_entcoef0.001_simplelr_math_35',
+[36m(main_task pid=58504)[0m              'experiment_name': 'v1_Qwen_Qwen2.5-Math-7B_max_response8192_batch768_rollout8_klcoef0.0001_entcoef0.001_simplelr_math_35',
+[36m(main_task pid=58504)[0m              'logger': ['console', 'wandb'],
+[36m(main_task pid=58504)[0m              'n_gpus_per_node': 6,
+[36m(main_task pid=58504)[0m              'nnodes': 2,
+[36m(main_task pid=58504)[0m              'project_name': 'simplerl-math-grpo',
+[36m(main_task pid=58504)[0m              'remove_clip': False,
+[36m(main_task pid=58504)[0m              'remove_previous_ckpt': False,
+[36m(main_task pid=58504)[0m              'resume_from_path': False,
+[36m(main_task pid=58504)[0m              'resume_mode': 'auto',
+[36m(main_task pid=58504)[0m              'save_freq': 5,
+[36m(main_task pid=58504)[0m              'test_freq': 5,
+[36m(main_task pid=58504)[0m              'total_epochs': 20,
+[36m(main_task pid=58504)[0m              'total_training_steps': None}}
+[36m(main_task pid=58504)[0m [validate_config] All configuration checks passed successfully!
+[36m(main_task pid=58504)[0m original dataset len: 8523
+[36m(main_task pid=58504)[0m filter dataset len: 8360
+[36m(main_task pid=58504)[0m original dataset len: 500
+[36m(main_task pid=58504)[0m filter dataset len: 496
+[36m(main_task pid=58504)[0m Size of train dataloader: 10
+[36m(main_task pid=58504)[0m Size of val dataloader: 1
+[36m(main_task pid=58504)[0m Total training steps: 200
+[36m(WorkerDict pid=91093, ip=10.1.31.5)[0m LOCAL_RANK: 0
+[36m(WorkerDict pid=91093, ip=10.1.31.5)[0m RANK: 0
+[36m(WorkerDict pid=91093, ip=10.1.31.5)[0m WORLD_SIZE: 12
+[36m(WorkerDict pid=91093, ip=10.1.31.5)[0m MASTER_ADDR: 10.1.31.5
+[36m(WorkerDict pid=91093, ip=10.1.31.5)[0m MASTER_PORT: 45707
+[36m(WorkerDict pid=91093, ip=10.1.31.5)[0m CUDA_VISIBLE_DEVICES: 0
+[36m(WorkerDict pid=91093, ip=10.1.31.5)[0m Number of available GPUs: 1
+[36m(WorkerDict pid=91093, ip=10.1.31.5)[0m rank: 0, local_rank: 0
+[36m(WorkerDict pid=58844)[0m LOCAL_RANK: 0
+[36m(WorkerDict pid=58844)[0m RANK: 8
+[36m(WorkerDict pid=58844)[0m WORLD_SIZE: 12
+[36m(WorkerDict pid=58844)[0m MASTER_ADDR: 10.1.31.5
+[36m(WorkerDict pid=58844)[0m MASTER_PORT: 45707
+[36m(WorkerDict pid=58844)[0m CUDA_VISIBLE_DEVICES: 2
+[36m(WorkerDict pid=58844)[0m Number of available GPUs: 1
+[36m(WorkerDict pid=58844)[0m rank: 8, local_rank: 2
+[36m(WorkerDict pid=58844)[0m Exception raised in creation task: The actor died because of an error raised in its creation task, [36mray::MYuxjkWorkerDict_1:2:WorkerDict.__init__()[39m (pid=58844, ip=10.0.166.135, actor_id=aff494c18338caa3b641d49413000000, repr=<verl.single_controller.ray.base.WorkerDict object at 0x7208694425f0>)
+[36m(WorkerDict pid=58844)[0m   File "/tmp/ray/session_2025-03-27_06-48-09_043050_26573/runtime_resources/working_dir_files/_ray_pkg_630278c9893db253/verl/single_controller/ray/base.py", line 449, in __init__
+[36m(WorkerDict pid=58844)[0m     self.worker_dict[key] = user_defined_cls(*init_args_dict[key].get('args', ()),
+[36m(WorkerDict pid=58844)[0m   File "/tmp/ray/session_2025-03-27_06-48-09_043050_26573/runtime_resources/working_dir_files/_ray_pkg_630278c9893db253/verl/workers/fsdp_workers.py", line 99, in __init__
+[36m(WorkerDict pid=58844)[0m     torch.cuda.set_device(local_rank)
+[36m(WorkerDict pid=58844)[0m   File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/torch/cuda/__init__.py", line 476, in set_device
+[36m(WorkerDict pid=58844)[0m     torch._C._cuda_setDevice(device)
+[36m(WorkerDict pid=58844)[0m RuntimeError: CUDA error: invalid device ordinal
+[36m(WorkerDict pid=58844)[0m CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+[36m(WorkerDict pid=58844)[0m For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+[36m(WorkerDict pid=58844)[0m Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+Error executing job with overrides: ['algorithm.adv_estimator=grpo', 'data.train_files=/workspace/simpleRL-reason/train.parquet', 'data.val_files=/workspace/simpleRL-reason/test.parquet', 'data.train_batch_size=768', 'data.val_batch_size=500', 'data.max_prompt_length=1024', 'data.max_response_length=8192', 'actor_rollout_ref.model.path=Qwen/Qwen2.5-Math-7B', 'actor_rollout_ref.actor.optim.lr=5e-7', 'actor_rollout_ref.model.use_remove_padding=True', 'actor_rollout_ref.actor.ppo_mini_batch_size=256', 'actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu=2', 'actor_rollout_ref.actor.use_kl_loss=True', 'actor_rollout_ref.actor.kl_loss_coef=0.0001', 'actor_rollout_ref.actor.entropy_coeff=0.001', 'actor_rollout_ref.actor.clip_ratio=0.2', 'actor_rollout_ref.actor.kl_loss_type=low_var_kl', 'actor_rollout_ref.model.enable_gradient_checkpointing=True', 'actor_rollout_ref.actor.fsdp_config.param_offload=False', 'actor_rollout_ref.actor.fsdp_config.grad_offload=False', 'actor_rollout_ref.actor.fsdp_config.optimizer_offload=False', 'actor_rollout_ref.rollout.temperature=1.0', 'actor_rollout_ref.rollout.log_prob_micro_batch_size=160', 'actor_rollout_ref.rollout.tensor_model_parallel_size=2', 'actor_rollout_ref.rollout.name=vllm', 'actor_rollout_ref.rollout.gpu_memory_utilization=0.75', 'actor_rollout_ref.rollout.n=8', 'actor_rollout_ref.rollout.enable_chunked_prefill=False', 'actor_rollout_ref.rollout.max_num_batched_tokens=10216', 'actor_rollout_ref.rollout.micro_rollout_batch_size=1024', 'actor_rollout_ref.ref.log_prob_micro_batch_size=160', 'actor_rollout_ref.ref.fsdp_config.param_offload=True', 'algorithm.kl_ctrl.kl_coef=0.001', 'critic.ppo_micro_batch_size_per_gpu=4', 'trainer.critic_warmup=0', 'trainer.logger=[console,wandb]', 'trainer.project_name=simplerl-math-grpo', 'trainer.remove_previous_ckpt=False', 'trainer.experiment_name=v1_Qwen_Qwen2.5-Math-7B_max_response8192_batch768_rollout8_klcoef0.0001_entcoef0.001_simplelr_math_35', 'trainer.n_gpus_per_node=6', 'trainer.nnodes=2', 'trainer.remove_clip=False', 'trainer.save_freq=5', 'trainer.test_freq=5', 'trainer.default_local_dir=/workspace/simpleRL-reason/checkpoints/v1_Qwen_Qwen2.5-Math-7B_max_response8192_batch768_rollout8_klcoef0.0001_entcoef0.001_simplelr_math_35', 'trainer.total_epochs=20']
+[36m(WorkerDict pid=58843)[0m LOCAL_RANK: 0
+[36m(WorkerDict pid=58843)[0m RANK: 7
+[36m(WorkerDict pid=58843)[0m WORLD_SIZE: 12
+[36m(WorkerDict pid=58843)[0m MASTER_ADDR: 10.1.31.5
+[36m(WorkerDict pid=58843)[0m MASTER_PORT: 45707
+[36m(WorkerDict pid=58843)[0m CUDA_VISIBLE_DEVICES: 1
+[36m(WorkerDict pid=58843)[0m Number of available GPUs: 1
+[36m(WorkerDict pid=58843)[0m rank: 7, local_rank: 1
+[36m(WorkerDict pid=58843)[0m Exception raised in creation task: The actor died because of an error raised in its creation task, [36mray::MYuxjkWorkerDict_1:1:WorkerDict.__init__()[39m (pid=58843, ip=10.0.166.135, actor_id=8fddda9ff8539c93224de4ad13000000, repr=<verl.single_controller.ray.base.WorkerDict object at 0x74fd54252650>)
+[36m(WorkerDict pid=58843)[0m   File "/tmp/ray/session_2025-03-27_06-48-09_043050_26573/runtime_resources/working_dir_files/_ray_pkg_630278c9893db253/verl/single_controller/ray/base.py", line 449, in __init__
+[36m(WorkerDict pid=58843)[0m     self.worker_dict[key] = user_defined_cls(*init_args_dict[key].get('args', ()),
+[36m(WorkerDict pid=58843)[0m   File "/tmp/ray/session_2025-03-27_06-48-09_043050_26573/runtime_resources/working_dir_files/_ray_pkg_630278c9893db253/verl/workers/fsdp_workers.py", line 99, in __init__
+[36m(WorkerDict pid=58843)[0m     torch.cuda.set_device(local_rank)
+[36m(WorkerDict pid=58843)[0m   File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/torch/cuda/__init__.py", line 476, in set_device
+[36m(WorkerDict pid=58843)[0m     torch._C._cuda_setDevice(device)
+[36m(WorkerDict pid=58843)[0m RuntimeError: CUDA error: invalid device ordinal
+[36m(WorkerDict pid=58843)[0m CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+[36m(WorkerDict pid=58843)[0m For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+[36m(WorkerDict pid=58843)[0m Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+Traceback (most recent call last):
+  File "/tmp/ray/session_2025-03-27_06-48-09_043050_26573/runtime_resources/working_dir_files/_ray_pkg_630278c9893db253/verl/trainer/main_ppo.py", line 111, in main
+    run_ppo(config)
+  File "/tmp/ray/session_2025-03-27_06-48-09_043050_26573/runtime_resources/working_dir_files/_ray_pkg_630278c9893db253/verl/trainer/main_ppo.py", line 119, in run_ppo
+    ray.get(main_task.remote(config, compute_score))
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(RayActorError): [36mray::main_task()[39m (pid=58504, ip=10.0.166.135)
+  File "/tmp/ray/session_2025-03-27_06-48-09_043050_26573/runtime_resources/working_dir_files/_ray_pkg_630278c9893db253/verl/trainer/main_ppo.py", line 204, in main_task
+    trainer.init_workers()
+  File "/tmp/ray/session_2025-03-27_06-48-09_043050_26573/runtime_resources/working_dir_files/_ray_pkg_630278c9893db253/verl/trainer/ppo/ray_trainer.py", line 629, in init_workers
+    self.ref_policy_wg.init_model()
+  File "/tmp/ray/session_2025-03-27_06-48-09_043050_26573/runtime_resources/working_dir_files/_ray_pkg_630278c9893db253/verl/single_controller/ray/base.py", line 42, in func
+    output = ray.get(output)
+ray.exceptions.RayActorError: The actor died because of an error raised in its creation task, [36mray::MYuxjkWorkerDict_1:2:WorkerDict.__init__()[39m (pid=58844, ip=10.0.166.135, actor_id=aff494c18338caa3b641d49413000000, repr=<verl.single_controller.ray.base.WorkerDict object at 0x7208694425f0>)
+  File "/tmp/ray/session_2025-03-27_06-48-09_043050_26573/runtime_resources/working_dir_files/_ray_pkg_630278c9893db253/verl/single_controller/ray/base.py", line 449, in __init__
+    self.worker_dict[key] = user_defined_cls(*init_args_dict[key].get('args', ()),
+  File "/tmp/ray/session_2025-03-27_06-48-09_043050_26573/runtime_resources/working_dir_files/_ray_pkg_630278c9893db253/verl/workers/fsdp_workers.py", line 99, in __init__
+    torch.cuda.set_device(local_rank)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/torch/cuda/__init__.py", line 476, in set_device
+    torch._C._cuda_setDevice(device)
+RuntimeError: CUDA error: invalid device ordinal
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
