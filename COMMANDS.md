@@ -27,9 +27,9 @@ uv pip install -e .
 # uv pip install --upgrade "nvidia-nccl-cu12==2.19.3"
 # uv pip install --upgrade "nvidia-nccl-cu12==2.26.2"
 # uv pip install --upgrade "nvidia-nccl-cu12==2.18.3"
-uv pip install --upgrade --force-reinstall "ray[default]==2.10.0"
+# uv pip install --upgrade --force-reinstall "ray[default]==2.10.0"
 
-python3 -c "import torch; print(torch.version.cuda)"
+# python3 -c "import torch; print(torch.version.cuda)"
 
 tmux
 
