@@ -45,7 +45,8 @@ dependencies = [
     "peft",
     "liger-kernel",
     "word2number",
-    "math-verify[antlr4_11_0]==0.6.0"
+    "math-verify[antlr4_11_0]==0.6.0",
+    "wandb"
 ]
 
 # Optional dependencies (extras_require in setup.py)
