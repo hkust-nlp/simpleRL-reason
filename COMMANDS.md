@@ -96,7 +96,7 @@ sudo apt install iputils-ping
 ping -c 10 $MASTER_NODE_IP
 
 sudo apt install iftop
-iftop -i podnet1
+sudo iftop
 ```
 
 ### Notes
