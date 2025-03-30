@@ -82,6 +82,7 @@ sudo apt-get install -y cuda-drivers-550
 sudo apt-get install -y nvidia-fabricmanager-550
 sudo systemctl start nvidia-fabricmanager
 sudo systemctl status nvidia-fabricmanager
+# Need to restart instance after this.
 
 
 # Ec2 setup
