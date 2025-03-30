@@ -116,6 +116,8 @@ ping -c 10 $MASTER_NODE_IP
 
 sudo apt install iftop
 sudo iftop
+
+cd /workspace && git clone git@github.com:aidando73/nccl-tests.git && cd nccl-tests && git checkout aidand-ec2-tests && realpath .
 ```
 
 ### Notes - 2 A100 nodes on AWS
