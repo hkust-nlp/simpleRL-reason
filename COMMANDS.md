@@ -86,7 +86,7 @@ tail -f /tmp/ray/session_*/logs/*
 
 
 # Testing bandwidth
-apt-get install -y iperf3
+sudo apt-get install -y iperf3
 # Server
 iperf3 -s
 # Client
@@ -100,5 +100,6 @@ iftop -i podnet1
 ```
 
 ### Notes
-- IP latency:
+- IP latency: 0.255ms
+- Transfer: 1.11 Gbps
 - Launch time on both A100 nodes: Sun Mar 30 2025 10:25:12 GMT+1100
