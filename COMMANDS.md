@@ -98,3 +98,6 @@ ping -c 10 $MASTER_NODE_IP
 sudo apt install iftop
 iftop -i podnet1
 ```
+
+### Notes
+- IP latency: 
