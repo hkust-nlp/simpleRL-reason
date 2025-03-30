@@ -99,7 +99,8 @@ sudo apt install iftop
 sudo iftop
 ```
 
-### Notes
+### Notes - 2 A100 nodes on AWS
+- p4d.24xlarge - 40GB RAM, SXM
 - IP latency: 0.255ms
 - Transfer: 1.11 Gbps
 - Launch time on both A100 nodes: Sun Mar 30 2025 10:25:12 GMT+1100
