@@ -9,13 +9,7 @@ source .envrc
 direnv allow
 
 # Install CUDA
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
-sudo dpkg -i cuda-keyring_1.1-1_all.deb
-sudo apt-get update
-sudo apt-get -y install cuda-toolkit-12-4
 
-sudo apt-get install -y nvidia-driver-550-open
-sudo apt-get install -y cuda-drivers-550
 
 source ~/miniconda3/bin/activate && conda create -y --prefix ./env python=3.10
 source ~/miniconda3/bin/activate && conda activate ./env
@@ -31,9 +25,8 @@ uv pip install -e .
 
 # python3 -c "import torch; print(torch.version.cuda)"
 
-tmux
-
 # launch the master node of ray
+source .envrc
 source ~/miniconda3/bin/activate && conda activate ./env
 ray start --head \
 --node-ip-address $MASTER_NODE_IP \
@@ -42,10 +35,14 @@ ray start --head \
 --include-dashboard true
 
 # Worker nodes
+source .envrc
 source ~/miniconda3/bin/activate && conda activate ./env
 ray start --address $MASTER_NODE_IP:6379  --num-gpus 8
 
 # From master node
+tmux
+source ~/miniconda3/bin/activate && conda activate ./env
+source .envrc
 bash train_grpo_math_tune_ray.sh \
     --model_name Qwen/Qwen2.5-Math-7B \
     --train_batch_size 1024 \
@@ -59,16 +56,23 @@ bash train_grpo_math_tune_ray.sh \
 
 
 ```bash
+
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+sudo dpkg -i cuda-keyring_1.1-1_all.deb
+sudo apt-get update
+sudo apt-get -y install cuda-toolkit-12-4
+
+sudo apt-get install -y nvidia-driver-550-open
+sudo apt-get install -y cuda-drivers-550
+
+
 # Ec2 setup
 sudo mkdir /workspace
 
 # Only if EBS volume is new
 sudo mkfs -t xfs /dev/nvme1n1
-
 sudo mount /dev/nvme1n1 /workspace
-
 echo '/dev/nvme1n1  /workspace  xfs  defaults,nofail  0  2' | sudo tee -a /etc/fstab
-
 sudo chown ubuntu:ubuntu /workspace
 
 cd /workspace && git clone https://github.com/aidando73/simpleRL-reason && realpath simpleRL-reason
