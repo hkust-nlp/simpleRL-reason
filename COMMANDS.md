@@ -1,3 +1,5 @@
+Assumes Ubuntu 22.04
+
 
 ```bash
 # One time setup
@@ -5,6 +7,15 @@ cp sample.envrc .envrc
 # Go to https://wandb.ai/authorize and fill in the WANDB_API_KEY
 source .envrc
 direnv allow
+
+# Install CUDA
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+sudo dpkg -i cuda-keyring_1.1-1_all.deb
+sudo apt-get update
+sudo apt-get -y install cuda-toolkit-12-4
+
+sudo apt-get install -y nvidia-driver-550-open
+sudo apt-get install -y cuda-drivers-550
 
 source ~/miniconda3/bin/activate && conda create -y --prefix ./env python=3.10
 source ~/miniconda3/bin/activate && conda activate ./env
