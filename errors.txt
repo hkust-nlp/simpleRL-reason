@@ -45,3 +45,106 @@ ray.exceptions.RayTaskError(AssertionError): [36mray::main_task()[39m (pid=143
   File "/tmp/ray/session_2025-03-30_00-21-49_688326_2792/runtime_resources/working_dir_files/_ray_pkg_e29b65fa6befab5a/verl/single_controller/ray/base.py", line 276, in _init_with_resource_pool
     assert register_center_actor is not None, f"failed to get register_center_actor: {self.name_prefix}_register_center in {list_named_actors(all_namespaces=True)}"
 AssertionError: failed to get register_center_actor: 6m0voG_register_center in [{'name': 'datasets_stats_actor', 'namespace': '_dataset_stats_actor'}, {'name': '_ray_internal_job_actor_raysubmit_mNL3xgLymL5e1qdf', 'namespace': 'SUPERVISOR_ACTOR_RAY_NAMESPACE'}]
+
+
+
+Downloading shards:   0%|          | 0/4 [00:00<?, ?it/s]
+Error executing job with overrides: ['algorithm.adv_estimator=grpo', 'data.train_files=/workspace/simpleRL-reason/train.parquet', 'data.val_files=/workspace/simpleRL-reason/test.parquet', 'data.train_batch_size=1024', 'data.val_batch_size=500', 'data.max_prompt_length=1024', 'data.max_response_length=3072', 'actor_rollout_ref.model.path=Qwen/Qwen2.5-Math-7B', 'actor_rollout_ref.actor.optim.lr=5e-7', 'actor_rollout_ref.model.use_remove_padding=True', 'actor_rollout_ref.actor.ppo_mini_batch_size=256', 'actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu=2', 'actor_rollout_ref.actor.use_kl_loss=True', 'actor_rollout_ref.actor.kl_loss_coef=0.0001', 'actor_rollout_ref.actor.entropy_coeff=0.001', 'actor_rollout_ref.actor.clip_ratio=0.2', 'actor_rollout_ref.actor.kl_loss_type=low_var_kl', 'actor_rollout_ref.model.enable_gradient_checkpointing=True', 'actor_rollout_ref.actor.fsdp_config.param_offload=False', 'actor_rollout_ref.actor.fsdp_config.grad_offload=False', 'actor_rollout_ref.actor.fsdp_config.optimizer_offload=False', 'actor_rollout_ref.rollout.temperature=1.0', 'actor_rollout_ref.rollout.log_prob_micro_batch_size=160', 'actor_rollout_ref.rollout.tensor_model_parallel_size=2', 'actor_rollout_ref.rollout.name=vllm', 'actor_rollout_ref.rollout.gpu_memory_utilization=0.75', 'actor_rollout_ref.rollout.n=8', 'actor_rollout_ref.rollout.enable_chunked_prefill=False', 'actor_rollout_ref.rollout.max_num_batched_tokens=5096', 'actor_rollout_ref.rollout.micro_rollout_batch_size=1024', 'actor_rollout_ref.ref.log_prob_micro_batch_size=160', 'actor_rollout_ref.ref.fsdp_config.param_offload=True', 'algorithm.kl_ctrl.kl_coef=0.001', 'critic.ppo_micro_batch_size_per_gpu=4', 'trainer.critic_warmup=0', 'trainer.logger=[console,wandb]', 'trainer.project_name=simplerl-math-grpo', 'trainer.remove_previous_ckpt=False', 'trainer.experiment_name=v1_Qwen_Qwen2.5-Math-7B_batch1024_rollout8_klcoef0.0001_entcoef0.001_simplelr_math_35', 'trainer.n_gpus_per_node=8', 'trainer.nnodes=2', 'trainer.remove_clip=False', 'trainer.save_freq=5', 'trainer.test_freq=5', 'trainer.default_local_dir=/workspace/simpleRL-reason/checkpoints/v1_Qwen_Qwen2.5-Math-7B_batch1024_rollout8_klcoef0.0001_entcoef0.001_simplelr_math_35', 'trainer.total_epochs=20']
+Traceback (most recent call last):
+  File "/tmp/ray/session_2025-03-30_00-21-49_688326_2792/runtime_resources/working_dir_files/_ray_pkg_149cd75e4d4d2145/verl/trainer/main_ppo.py", line 111, in main
+    run_ppo(config)
+  File "/tmp/ray/session_2025-03-30_00-21-49_688326_2792/runtime_resources/working_dir_files/_ray_pkg_149cd75e4d4d2145/verl/trainer/main_ppo.py", line 119, in run_ppo
+    ray.get(main_task.remote(config, compute_score))
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ReadTimeout): [36mray::main_task()[39m (pid=17066, ip=172.31.36.239)
+  File "/tmp/ray/session_2025-03-30_00-21-49_688326_2792/runtime_resources/working_dir_files/_ray_pkg_149cd75e4d4d2145/verl/trainer/main_ppo.py", line 204, in main_task
+    trainer.init_workers()
+  File "/tmp/ray/session_2025-03-30_00-21-49_688326_2792/runtime_resources/working_dir_files/_ray_pkg_149cd75e4d4d2145/verl/trainer/ppo/ray_trainer.py", line 630, in init_workers
+    self.ref_policy_wg.init_model()
+  File "/tmp/ray/session_2025-03-30_00-21-49_688326_2792/runtime_resources/working_dir_files/_ray_pkg_149cd75e4d4d2145/verl/single_controller/ray/base.py", line 42, in func
+    output = ray.get(output)
+ray.exceptions.RayTaskError(ReadTimeout): [36mray::WorkerDict.ref_init_model()[39m (pid=4952, ip=172.31.33.92, actor_id=45db46f38f7f22fd0f84c0ec07000000, repr=<verl.single_controller.ray.base.WorkerDict object at 0x7c61dc156320>)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/urllib3/connection.py", line 516, in getresponse
+    httplib_response = super().getresponse()
+  File "/workspace/simpleRL-reason/env/lib/python3.10/http/client.py", line 1375, in getresponse
+    response.begin()
+  File "/workspace/simpleRL-reason/env/lib/python3.10/http/client.py", line 318, in begin
+    version, status, reason = self._read_status()
+  File "/workspace/simpleRL-reason/env/lib/python3.10/http/client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/workspace/simpleRL-reason/env/lib/python3.10/socket.py", line 717, in readinto
+    return self._sock.recv_into(b)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/ssl.py", line 1307, in recv_into
+    return self.read(nbytes, buffer)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/ssl.py", line 1163, in read
+    return self._sslobj.read(len, buffer)
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+[36mray::WorkerDict.ref_init_model()[39m (pid=4952, ip=172.31.33.92, actor_id=45db46f38f7f22fd0f84c0ec07000000, repr=<verl.single_controller.ray.base.WorkerDict object at 0x7c61dc156320>)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/urllib3/util/retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+[36mray::WorkerDict.ref_init_model()[39m (pid=4952, ip=172.31.33.92, actor_id=45db46f38f7f22fd0f84c0ec07000000, repr=<verl.single_controller.ray.base.WorkerDict object at 0x7c61dc156320>)
+  File "/tmp/ray/session_2025-03-30_00-21-49_688326_2792/runtime_resources/working_dir_files/_ray_pkg_149cd75e4d4d2145/verl/single_controller/ray/base.py", line 401, in func
+    return getattr(self.worker_dict[key], name)(*args, **kwargs)
+  File "/tmp/ray/session_2025-03-30_00-21-49_688326_2792/runtime_resources/working_dir_files/_ray_pkg_149cd75e4d4d2145/verl/single_controller/base/decorator.py", line 404, in inner
+    return func(*args, **kwargs)
+  File "/tmp/ray/session_2025-03-30_00-21-49_688326_2792/runtime_resources/working_dir_files/_ray_pkg_149cd75e4d4d2145/verl/workers/fsdp_workers.py", line 395, in init_model
+    self.ref_module_fsdp = self._build_model_optimizer(model_path=self.config.model.path,
+  File "/tmp/ray/session_2025-03-30_00-21-49_688326_2792/runtime_resources/working_dir_files/_ray_pkg_149cd75e4d4d2145/verl/workers/fsdp_workers.py", line 174, in _build_model_optimizer
+    self.tokenizer = hf_tokenizer(local_path, trust_remote_code=trust_remote_code)
+  File "/tmp/ray/session_2025-03-30_00-21-49_688326_2792/runtime_resources/working_dir_files/_ray_pkg_149cd75e4d4d2145/verl/utils/tokenizer.py", line 55, in hf_tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(name_or_path, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 921, in from_pretrained
+    return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 1988, in from_pretrained
+    resolved_vocab_files[file_id] = cached_file(
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/transformers/utils/hub.py", line 403, in cached_file
+    resolved_file = hf_hub_download(
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 862, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1011, in _hf_hub_download_to_cache_dir
+    _download_to_tmp_and_move(
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1547, in _download_to_tmp_and_move
+    http_get(
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 371, in http_get
+    r = _request_wrapper(
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 303, in _request_wrapper
+    response = get_session().request(method=method, url=url, **params)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+  File "/workspace/simpleRL-reason/env/lib/python3.10/site-packages/requests/adapters.py", line 713, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: (ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: e6367c27-21ea-4e89-85f7-7e5a1dfe26a5)')
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

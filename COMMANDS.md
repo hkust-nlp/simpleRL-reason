@@ -52,6 +52,21 @@ bash train_grpo_math_tune_ray.sh \
     --rollout_gpu_memory_util 0.75 \
     --rollout_tp 2 \
     --save_freq 5
+
+
+# Diagnostics
+source ~/miniconda3/bin/activate && conda activate ./env
+source .envrc
+python3 -c "import torch; print(torch.version.cuda)"
+python3 -c "import torch; print(torch.cuda.is_available())"
+# Check CUDA devices
+python3 -c "import torch; print(f'CUDA device count: {torch.cuda.device_count()}')"
+python3 -c "import torch; [print(f'CUDA Device {i}: {torch.cuda.get_device_name(i)}') for i in range(torch.cuda.device_count())]"
+python3 -c "import torch; print(f'Current CUDA device: {torch.cuda.current_device()}')"
+
+# Check NCCL version
+python3 -c "import torch; print(f'NCCL Version: {torch.cuda.nccl.version()}')" 
+
 ```
 
 
