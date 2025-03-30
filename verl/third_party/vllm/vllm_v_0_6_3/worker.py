@@ -161,7 +161,6 @@ class Worker(Worker):
             self.parallel_config.world_size = world_size
 
             # Print GLOO_SOCKET_IFNAME for debugging
-            import os
             print(f"GLOO_SOCKET_IFNAME: {os.environ.get('GLOO_SOCKET_IFNAME', 'Not set')}")
 
             _check_if_gpu_supports_dtype(self.model_config.dtype)
