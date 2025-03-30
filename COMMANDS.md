@@ -64,6 +64,9 @@ sudo apt-get -y install cuda-toolkit-12-4
 
 sudo apt-get install -y nvidia-driver-550-open
 sudo apt-get install -y cuda-drivers-550
+sudo apt-get install -y nvidia-fabricmanager-550
+sudo systemctl start nvidia-fabricmanager
+sudo systemctl status nvidia-fabricmanager
 
 
 # Ec2 setup
