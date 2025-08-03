@@ -209,14 +209,11 @@ If you find our paper/blog or our code useful, we would appreciate it if you cou
 
 Cite our paper:
 ```bibtex
-@misc{zeng2025simplerlzooinvestigatingtamingzero,
+@inproceedings{zeng2025simplerlzooinvestigatingtamingzero,
       title={SimpleRL-Zoo: Investigating and Taming Zero Reinforcement Learning for Open Base Models in the Wild}, 
       author={Weihao Zeng and Yuzhen Huang and Qian Liu and Wei Liu and Keqing He and Zejun Ma and Junxian He},
-      year={2025},
-      eprint={2503.18892},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2503.18892}, 
+      booktitle={Second Conference on Language Modeling},
+      year={2025}
 }
 ```
 
